@@ -1,6 +1,8 @@
 package com.wellsfargo.training.lms.model;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
+import java.util.Base64;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 //import com.wellsfargo.training.pms.model.Address;
@@ -12,12 +14,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 public class Customer {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="did")
+	@Column(name="cid")
 	private Long id;
 	
 	@Column(unique=true)
@@ -36,9 +40,21 @@ public class Customer {
 	
 	@Column(name="phone")
 	private String phoneno;
-
+	
+	
+	
 	public Customer() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Customer(Long id, String email, String fname, String lname, String password, Date dob, String phoneno) {
+		this.id = id;
+		this.email = email;
+		this.fname = fname;
+		this.lname = lname;
+		this.password = password;
+		this.dob = dob;
+		this.phoneno = phoneno;
 	}
 
 	public Long getId() {
@@ -78,7 +94,11 @@ public class Customer {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		Base64.Encoder encoder = Base64.getEncoder();  
+        String normalString = password;
+        String encodedString = encoder.encodeToString(   // encrypt password in database field
+        normalString.getBytes(StandardCharsets.UTF_8) );
+        this.password = encodedString;
 	}
 
 	public Date getDob() {
@@ -96,5 +116,8 @@ public class Customer {
 	public void setPhoneno(String phoneno) {
 		this.phoneno = phoneno;
 	}
+
 	
+	
+
 }
