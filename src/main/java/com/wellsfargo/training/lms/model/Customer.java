@@ -12,6 +12,7 @@ import jakarta.persistence.*;
 @Table(name="customers")
 public class Customer {
 
+	 @SequenceGenerator(name="product_seq",initialValue = 1000, allocationSize=1)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cid")

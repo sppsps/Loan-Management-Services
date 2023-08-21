@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="item_master")
-public class itemMaster {
+public class ItemMaster {
 
+	@SequenceGenerator(name="product_seq",initialValue = 1000, allocationSize=1)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="iid")
@@ -29,11 +30,11 @@ public class itemMaster {
 	@Column(name="item_valuation")
 	private int itemValuation;
 
-	public itemMaster() {
+	public ItemMaster() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public itemMaster(Long id, String itemId, String itemDescription, Boolean issueStatus, String itemMake,
+	public ItemMaster(Long id, String itemId, String itemDescription, Boolean issueStatus, String itemMake,
 			String itemCategory, int itemValuation) {
 		this.id = id;
 		this.itemId = itemId;
