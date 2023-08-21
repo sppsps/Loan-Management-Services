@@ -22,6 +22,6 @@ public class CustomerService {
 	{
 		//System.out.println("Inservice");
 		//System.out.println(arepo.findByEmail(email));
-		return arepo.findByEmail(email);
+		return arepo.findByEmpId(email);
 	}
 }
