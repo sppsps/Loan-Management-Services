@@ -8,5 +8,5 @@ import com.wellsfargo.training.lms.model.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	
-	public Optional<Customer> findByEmail(String email);
+	public Optional<Customer> findByEmpId(String email);
 }

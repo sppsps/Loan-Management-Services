@@ -39,12 +39,12 @@ public class CustomerController {
 	public Boolean loginCustomer(@Validated @RequestBody Customer customer) throws ResourceNotFoundException
 	{
 		Boolean a = false;
-		String email = customer.getEmail();
+		String empId = customer.getempId();
 		String password  =customer.getPassword();
-		Customer d = aservice.loginCustomer(email).orElseThrow(()->
+		Customer d = aservice.loginCustomer(empId).orElseThrow(()->
 		new ResourceNotFoundException("Customer Not Found for this id ::"));
 		//System.out.println(d.getPassword()+password);
-		if(email.equals(d.getEmail()) && password.equals(d.getPassword()))
+		if(empId.equals(d.getempId()) && password.equals(d.getPassword()))
 		{
 			a = true;
 		}
