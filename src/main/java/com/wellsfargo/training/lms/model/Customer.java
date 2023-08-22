@@ -18,7 +18,7 @@ public class Customer {
 	@Column(name="cid")
 	private Long id;
 	
-	@Column(name="empId", length = 6)
+	@Column(name="empId", length = 6, unique = true)
 	private String empId;
 	
 	@Column(name="first_name", length = 20, nullable=false)

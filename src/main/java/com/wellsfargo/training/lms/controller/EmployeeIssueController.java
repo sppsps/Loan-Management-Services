@@ -3,6 +3,7 @@ package com.wellsfargo.training.lms.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,10 +42,19 @@ public class EmployeeIssueController {
 			throws ResourceNotFoundException{
 				
 				EmployeeIssue p = eservice.getSingleItem(pId).orElseThrow(() -> 
-				new ResourceNotFoundException("ItemMaster not found for this Id: "+ pId));
+				new ResourceNotFoundException("Employee Issue not found for this Id: "+ pId));
 				
 				return ResponseEntity.ok().body(p);
 			}
+	
+	@GetMapping("/emp_issues/emp/{id}")
+	public List<Optional<EmployeeIssue>> getEmployeeIssueByEmp(@PathVariable(value="id") String eId)
+			throws ResourceNotFoundException{
+		
+				List<Optional<EmployeeIssue>> p = eservice.getById(eId);
+		
+		return p;
+	}
 	
 	@DeleteMapping("/emp_issue/{id}")
 	public Map<String, Boolean> deleteEmployeeIssue(@PathVariable(value="id") Long pId)

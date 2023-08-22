@@ -1,16 +1,21 @@
 package com.wellsfargo.training.lms.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.wellsfargo.training.lms.exceptions.ResourceNotFoundException;
 import com.wellsfargo.training.lms.model.CustomerCard;
+import com.wellsfargo.training.lms.model.EmployeeIssue;
 import com.wellsfargo.training.lms.service.CustomerCardService;
 
 /*
@@ -47,6 +52,14 @@ public class CustomerCardController {
 		return p;
 	}
 	
+	@GetMapping("/customer_card/{id}")
+	public List<Optional<CustomerCard>> getCustomerCardByEmp(@PathVariable(value="id") String eId)
+			throws ResourceNotFoundException{
+		
+				List<Optional<CustomerCard>> c = pservice.getById(eId);
+		
+		return c;
+	}
 	// Postman/Browser --> Controller -->Service -> Repository -> DataBase
 	// All layers will use Model when required
 	//Open PostMan, make a GET Request - http://localhost:8085/pms/api/products/

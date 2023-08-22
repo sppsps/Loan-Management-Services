@@ -23,7 +23,7 @@ public class CustomerCard {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date issue_date;
 	
-	@Column(name="loan_id",length=6)
+	@Column(name="loan_id",length=6, unique = true)
 	private String loanId;
 
 	public CustomerCard() {

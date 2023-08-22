@@ -1,6 +1,7 @@
 package com.wellsfargo.training.lms.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,8 @@ public class CustomerCardService {
  		
  		return irepo.findAll(); //Define in JPA repo.
  	}
+	 
+	 public List<Optional<CustomerCard>> getById(String empId){
+		 return irepo.findByEmpId(empId);
+	 }
 }
