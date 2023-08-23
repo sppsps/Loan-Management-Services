@@ -1,16 +1,25 @@
 package com.wellsfargo.training.lms.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.training.lms.exceptions.ResourceNotFoundException;
 import com.wellsfargo.training.lms.model.Customer;
+import com.wellsfargo.training.lms.model.EmployeeIssue;
 import com.wellsfargo.training.lms.service.CustomerService;
 
 
@@ -53,5 +62,42 @@ public class CustomerController {
 		}
 		return a;
 	}
+	@GetMapping("/customers")
+	public List<Customer> getAllCustomers(){
+		return aservice.getAll();
+	}
 	
+	@DeleteMapping("/customers/{id}")
+	public Map<String, Boolean> deleteCustomer(@PathVariable(value="id") Long pId)
+		throws ResourceNotFoundException{
+			
+			Customer l = aservice.getOne(pId).orElseThrow(() -> 
+			new ResourceNotFoundException("Customer not found for this Id: "+ pId));
+			
+			aservice.deleteId(pId);
+			
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("Deleted", Boolean.TRUE);
+			
+			return response;
+		}
+	
+	@PutMapping("/customers/{id}")
+	public ResponseEntity<Customer> updateCustomer(@PathVariable(value="id") Long pId,
+			@Validated @RequestBody Customer e)
+			throws ResourceNotFoundException{
+				
+				Customer c = aservice.getOne(pId).orElseThrow(() -> 
+				new ResourceNotFoundException("Customer not found for this Id: "+ pId));
+				//System.out.println(pId);
+				c.setDept(e.getDept());
+				c.setDesg(e.getDesg());
+				c.setDob(e.getDob());
+				c.setDoj(e.getDoj());
+				c.setFname(e.getFname());
+				
+				final Customer updatedCustomer = aservice.registerCustomer(c);
+				
+				return ResponseEntity.ok().body(updatedCustomer);
+			}
 }
