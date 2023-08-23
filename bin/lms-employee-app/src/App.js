@@ -1,4 +1,4 @@
-import logo from './logo.jpeg';
+import logo from './logo.svg';
 import './App.css';
 import  {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -31,12 +31,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src='./images/payday.png' className="App-logo" alt="logo" />
         <h1>Payday Loans</h1>
       </header>
 
       <section>
-        <div style={{ backgroundImage: "url(/images/background.png)",
+        <div style={{ backgroundImage: "url(/images/lms2.jpg)",
                     backgroundRepeat: 'no-repeat',
                     backgroundSize:'cover', minHeight:'100vh',minWidth:'100vw'}}>
           <Router>
