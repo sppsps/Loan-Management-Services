@@ -9,6 +9,8 @@ import Item from './components/Item';
 import NavBar from './components/NavBar';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import { faTrash, faEdit, faList, faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup} from '@fortawesome/free-solid-svg-icons';
+import LoanCard from './components/LoanCard';
+import Loan from './components/Loan';
 
 library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup);
 
@@ -47,6 +49,8 @@ function App() {
               <Route path = 'register' Component={Register}></Route>
               <Route path = 'login' Component={Login}></Route>
               <Route path = 'items' Component={Item}></Route>
+              <Route path='/loan' Component={Loan}></Route>
+              
             </Routes>
           </Router>
         </div>
