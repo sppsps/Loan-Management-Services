@@ -11,6 +11,7 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import { faTrash, faEdit, faList, faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup} from '@fortawesome/free-solid-svg-icons';
 import LoanCard from './components/LoanCard';
 import Loan from './components/Loan';
+import CustomerInfo from './components/Customer';
 
 library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup);
 
@@ -50,6 +51,7 @@ function App() {
               <Route path = 'login' Component={Login}></Route>
               <Route path = 'items' Component={Item}></Route>
               <Route path='/loan' Component={Loan}></Route>
+              <Route path = '/customers' Component={CustomerInfo}></Route>
               
             </Routes>
           </Router>

@@ -68,7 +68,14 @@ static async registerCustomer(dealer) {
     console.log("First"+username);
    
  }
-
+ static async getCustomerInfo() {
+    return axios.get('http://localhost:8090/paydayloans/api/customers')
+      .then((response) => response.data)
+      .catch((error) => {
+        console.error("Error fetching customer info:", error);
+        throw error;
+      });
+  }
  static isUserLoggedIn() {
     let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
     if (user === null) return false

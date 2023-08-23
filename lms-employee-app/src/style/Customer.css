@@ -1,0 +1,47 @@
+/* CustomerInfo.css */
+
+
+.Customer-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    /* border: 5px solid crimson;   */
+    /* margin: 25px 0; */
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    border-spacing: 30px;
+    
+  }
+  
+   .Customer-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .Customer-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.Customer-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.Customer-table tbody tr:nth-of-type(odd) {
+    background-color:beige;
+}
+  
+.Customer-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+  /* h2 {
+    color:bisque;
+    margin-bottom: 10px;
+  } */
+  
+  /* Add more custom styling as needed */
+  
