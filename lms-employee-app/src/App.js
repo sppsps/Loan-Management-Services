@@ -31,14 +31,15 @@ library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faB
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Payday Loans</h1>
-      </header>
+      </header> */}
 
       <section>
         <div style={{ backgroundImage: "url(/images/background.png)",
                     backgroundRepeat: 'no-repeat',
+                    // display:'flex',
                     backgroundSize:'cover', minHeight:'100vh',minWidth:'100vw'}}>
           <Router>
             <NavBar>

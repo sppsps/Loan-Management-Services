@@ -7,7 +7,7 @@ export default class Item extends Component{
             <div style ={{
                 display:'flex',
                 justifyContent:'center',
-                color:'yellow',
+                color:'black',
                 height:'100px'
                     }}>
                 <h1> Items List</h1>
