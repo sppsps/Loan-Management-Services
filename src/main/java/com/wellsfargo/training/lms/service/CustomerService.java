@@ -1,5 +1,6 @@
 package com.wellsfargo.training.lms.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,18 @@ public class CustomerService {
 	
 	public Customer registerCustomer(Customer a) {
 		return arepo.save(a);
+	}
+	
+	public List<Customer> getAll(){
+		return arepo.findAll();
+	}
+	
+	public void deleteId(Long Id) {
+		arepo.deleteById(Id);
+	}
+	
+	public Optional<Customer> getOne(Long id) {
+		return arepo.findById(id);
 	}
 	
 	public Optional<Customer> loginCustomer(String email)
