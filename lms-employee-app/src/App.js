@@ -7,6 +7,11 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Item from './components/Item';
 import NavBar from './components/NavBar';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import { faTrash, faEdit, faList, faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup);
+
 
 
 /*
@@ -24,8 +29,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Loan Management System</h1>
+        <img src='./images/payday.png' className="App-logo" alt="logo" />
+        <h1>Payday Loans</h1>
       </header>
 
       <section>
