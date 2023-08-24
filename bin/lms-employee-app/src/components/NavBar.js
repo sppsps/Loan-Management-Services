@@ -1,18 +1,38 @@
-import React from 'react';
-import '../style/NavBar.css'
-
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import '../style/NavBar.css';
+import { IconContext } from 'react-icons';
+import logo from '../logo.jpeg';
 
 const NavBar = () => {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
 
     return(
-        <nav className = "navbar">
-            <ul className = "nav-list">
-                <li className = "nav-item">
-                    <Link to="/" className = "nav-link">Home</Link>
-                </li>
+      <>
 
-                <li className = "nav-item">
+      <IconContext.Provider value={{ color: '#fff' }}>
+      <div className='navbar'>
+        <Link to='#' className='menu-bars'>
+          <FaIcons.FaBars onClick={showSidebar} />
+        </Link>
+        <img src="../images/payday.png" className="App-logo" alt="logo" />
+        <h1 class="heading">Payday Loans</h1>
+      </div>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-list' onClick={showSidebar}>
+            <li className='navbar-toggle'>
+              <Link to='#' className='menu-bars'>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            <li className = "nav-item">
+              <Link to="/" className = "nav-link">Home</Link>
+            </li>
+            <li className = "nav-item">
                     <Link to="/register" className = "nav-link">Register</Link>
                 </li>
 
@@ -26,8 +46,14 @@ const NavBar = () => {
                 <li className = "nav-item">
                     <Link to="/loan" className = "nav-link">Loan Cards</Link>
                 </li>
-            </ul>
+                <li className="nav-item">
+                  {/* <img src="../images/payday.png"></img> */}
+                    <Link to="/customers" className="nav-link">Customers Info</Link>
+                </li> 
+          </ul>
         </nav>
+      </IconContext.Provider>
+    </>
     );
 }
 

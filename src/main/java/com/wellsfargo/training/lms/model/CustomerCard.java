@@ -5,10 +5,15 @@ import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name="customer_card")
-
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
+@ToString
 public class CustomerCard {
 
 	@SequenceGenerator(name="product_seq",initialValue = 1000, allocationSize=1)
@@ -17,24 +22,29 @@ public class CustomerCard {
 	@Column(name="ccid")
 	private Long id;
 	
-	@Column(name="empId", length = 6)
-	private String empId;
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date issue_date;
+	private Date issueDate;
+
+	@ManyToOne
+    @JoinColumn(name = "emp_Id")
+    private Customer customer;
 	
-	@Column(name="loan_id",length=6, unique = true)
-	private String loanId;
+	@ManyToOne
+    @JoinColumn(name = "loan_id")
+    private LoanCardMaster loanCard;
 
 	public CustomerCard() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerCard(Long id, String empId, Date issue_date, String loanId) {
+	public CustomerCard(Long id, Date issueDate, String loanId, Customer customer) {
+		super();
 		this.id = id;
-		this.empId = empId;
-		this.issue_date = issue_date;
-		this.loanId = loanId;
+		this.issueDate = issueDate;
+		//this.loanId = loanId;
+		this.customer = customer;
 	}
 
 	public Long getId() {
@@ -45,27 +55,21 @@ public class CustomerCard {
 		this.id = id;
 	}
 
-	public String getEmpId() {
-		return empId;
+	public Date getIssueDate() {
+		return issueDate;
 	}
 
-	public void setEmpId(String empId) {
-		this.empId = empId;
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
 	}
 
-	public Date getIssue_date() {
-		return issue_date;
+
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setIssue_date(Date issue_date) {
-		this.issue_date = issue_date;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-
-	public String getLoanId() {
-		return loanId;
-	}
-
-	public void setLoanId(String loanId) {
-		this.loanId = loanId;
-	}
+	
 }

@@ -1,5 +1,8 @@
 package com.wellsfargo.training.lms.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +22,9 @@ public class LoanCardMaster {
 	
 	@Column(name="duration")
 	private int duration;
+	
+	@OneToMany(mappedBy = "loanCard", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CustomerCard> customerCards = new ArrayList<>();
 
 	public LoanCardMaster() {
 		// TODO Auto-generated constructor stub

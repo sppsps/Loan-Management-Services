@@ -1,5 +1,8 @@
 package com.wellsfargo.training.lms.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -29,6 +32,9 @@ public class ItemMaster {
 	
 	@Column(name="item_valuation")
 	private int itemValuation;
+	
+	@OneToMany(mappedBy = "itemMaster", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<EmployeeIssue> empIssues = new ArrayList<>();
 
 	public ItemMaster() {
 		// TODO Auto-generated constructor stub

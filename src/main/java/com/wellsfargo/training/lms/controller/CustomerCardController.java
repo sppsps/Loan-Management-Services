@@ -48,21 +48,22 @@ public class CustomerCardController {
     //Insert JSON product object.
 	@PostMapping("/customer_card")
 	public CustomerCard saveCustomerCard(@Validated @RequestBody CustomerCard product) {
+		System.out.println(product.getCustomer());
 		CustomerCard p=pservice.saveItem(product);
 		return p;
 	}
 	
-	@GetMapping("/customer_card/{id}")
-	public List<Optional<CustomerCard>> getCustomerCardByEmp(@PathVariable(value="id") String eId)
+	@GetMapping("/customer_card/{emp_id}")
+	public List<CustomerCard> getCustomerCardByEmp(@PathVariable(value="id") String eId)
 			throws ResourceNotFoundException{
 		
-				List<Optional<CustomerCard>> c = pservice.getById(eId);
+				List<CustomerCard> c = pservice.getById(eId);
 		
 		return c;
 	}
-	// Postman/Browser --> Controller -->Service -> Repository -> DataBase
-	// All layers will use Model when required
-	//Open PostMan, make a GET Request - http://localhost:8085/pms/api/products/
+//	// Postman/Browser --> Controller -->Service -> Repository -> DataBase
+//	// All layers will use Model when required
+//	//Open PostMan, make a GET Request - http://localhost:8085/pms/api/products/
 	@GetMapping("/customer_card")
 	public List<CustomerCard> getAllCustomerCards() {
 		return pservice.listAll();   // Invokes service Method user defined listAll()

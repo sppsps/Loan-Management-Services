@@ -48,10 +48,10 @@ public class EmployeeIssueController {
 			}
 	
 	@GetMapping("/emp_issues/emp/{id}")
-	public List<Optional<EmployeeIssue>> getEmployeeIssueByEmp(@PathVariable(value="id") String eId)
+	public List<EmployeeIssue> getEmployeeIssueByEmp(@PathVariable(value="id") String eId)
 			throws ResourceNotFoundException{
 		
-				List<Optional<EmployeeIssue>> p = eservice.getById(eId);
+				List<EmployeeIssue> p = eservice.getById(eId);
 		
 		return p;
 	}
@@ -78,7 +78,6 @@ public class EmployeeIssueController {
 				EmployeeIssue issue = eservice.getSingleItem(pId).orElseThrow(() -> 
 				new ResourceNotFoundException("Loan Card not found for this Id: "+ pId));
 				//System.out.println(pId);
-				issue.setEmpId(e.getEmpId());
 				issue.setIssueDate(e.getIssueDate());
 				issue.setIssueId(e.getIssueId());
 				issue.setItemId(e.getItemId());

@@ -19,29 +19,32 @@ public class EmployeeIssue {
 	@Column(name="issue_id", length = 6)
 	private String issueId;
 	
-	@Column(name="emp_id", length=6)
-	private String empId;
-	
-	@Column(name="item_id", length=6)
-	private String itemId;
-	
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date issueDate;
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date returnDate;
+	
+	@ManyToOne
+    @JoinColumn(name = "emp_Id")
+    private Customer customer;
 
+	@ManyToOne
+    @JoinColumn(name = "item_id")
+    private ItemMaster itemMaster;
+	
 	public EmployeeIssue() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmployeeIssue(Long id, String issueId, String empId, String itemId, Date issueDate, Date returnDate) {
+	public EmployeeIssue(Long id, String issueId, String itemId, Date issueDate, Date returnDate, Customer customer) {
+		super();
 		this.id = id;
 		this.issueId = issueId;
-		this.empId = empId;
-		this.itemId = itemId;
+		//this.itemId = itemId;
 		this.issueDate = issueDate;
 		this.returnDate = returnDate;
+		this.customer = customer;
 	}
 
 	public Long getId() {
@@ -60,22 +63,6 @@ public class EmployeeIssue {
 		this.issueId = issueId;
 	}
 
-	public String getEmpId() {
-		return empId;
-	}
-
-	public void setEmpId(String empId) {
-		this.empId = empId;
-	}
-
-	public String getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
-	}
-
 	public Date getIssueDate() {
 		return issueDate;
 	}
@@ -91,5 +78,14 @@ public class EmployeeIssue {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 	
 }

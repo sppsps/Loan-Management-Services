@@ -25,9 +25,9 @@ public class EmployeeIssueService {
 		return esrepo.findAll();
 	}
 	
-	public List<Optional<EmployeeIssue>> getById(String empId)
+	public List<EmployeeIssue> getById(String empId)
 	{
-		return esrepo.findByEmpId(empId);
+		return esrepo.findEmployeeIssuesByEmpId(empId);
 	}
 	public Optional<EmployeeIssue> getSingleItem(long id){
 		return esrepo.findById(id);

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './logo.jpeg';
 import './App.css';
 import  {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import { faTrash, faEdit, faList, faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup} from '@fortawesome/free-solid-svg-icons';
 import LoanCard from './components/LoanCard';
 import Loan from './components/Loan';
+import CustomerInfo from './components/Customer';
 
 library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup);
 
@@ -30,14 +31,15 @@ library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faB
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src='./images/payday.png' className="App-logo" alt="logo" />
+      {/* <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <h1>Payday Loans</h1>
-      </header>
+      </header> */}
 
       <section>
-        <div style={{ backgroundImage: "url(/images/lms2.jpg)",
+        <div style={{ backgroundImage: "url(/images/background.png)",
                     backgroundRepeat: 'no-repeat',
+                    // display:'flex',
                     backgroundSize:'cover', minHeight:'100vh',minWidth:'100vw'}}>
           <Router>
             <NavBar>
@@ -50,6 +52,7 @@ function App() {
               <Route path = 'login' Component={Login}></Route>
               <Route path = 'items' Component={Item}></Route>
               <Route path='/loan' Component={Loan}></Route>
+              <Route path = '/customers' Component={CustomerInfo}></Route>
               
             </Routes>
           </Router>

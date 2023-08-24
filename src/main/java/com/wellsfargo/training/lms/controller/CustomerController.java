@@ -51,12 +51,12 @@ public class CustomerController {
 	public Boolean loginCustomer(@Validated @RequestBody Customer customer) throws ResourceNotFoundException
 	{
 		Boolean a = false;
-		String empId = customer.getempId();
+		String empId = customer.getEmpId();
 		String password  =customer.getPassword();
 		Customer d = aservice.loginCustomer(empId).orElseThrow(()->
 		new ResourceNotFoundException("Customer Not Found for this id ::"));
 		//System.out.println(d.getPassword()+password);
-		if(empId.equals(d.getempId()) && password.equals(d.getPassword()))
+		if(empId.equals(d.getEmpId()) && password.equals(d.getPassword()))
 		{
 			a = true;
 		}
@@ -95,6 +95,7 @@ public class CustomerController {
 				c.setDob(e.getDob());
 				c.setDoj(e.getDoj());
 				c.setFname(e.getFname());
+				c.setCustomerCards(e.getCustomerCards());
 				
 				final Customer updatedCustomer = aservice.registerCustomer(c);
 				

@@ -2,17 +2,20 @@ package com.wellsfargo.training.lms.model;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name="customers")
 public class Customer {
 
-	 @SequenceGenerator(name="product_seq",initialValue = 1000, allocationSize=1)
+	@SequenceGenerator(name="product_seq",initialValue = 1000, allocationSize=1)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cid")
@@ -47,12 +50,21 @@ public class Customer {
 	@Column(name="is_admin")
 	private Boolean isAdmin;
 
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CustomerCard> customerCards = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<EmployeeIssue> empIssues = new ArrayList<>();
+
 	public Customer() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Customer(Long id, String empId, String fname, String lname, String desg, String dept, char sex,
-			String password, Date dob, Date doj, Boolean isAdmin) {
+			String password, Date dob, Date doj, Boolean isAdmin, List<CustomerCard> customerCards,
+			List<EmployeeIssue> empIssues) {
+		super();
 		this.id = id;
 		this.empId = empId;
 		this.fname = fname;
@@ -64,6 +76,8 @@ public class Customer {
 		this.dob = dob;
 		this.doj = doj;
 		this.isAdmin = isAdmin;
+		this.customerCards = customerCards;
+		this.empIssues = empIssues;
 	}
 
 	public Long getId() {
@@ -74,11 +88,11 @@ public class Customer {
 		this.id = id;
 	}
 
-	public String getempId() {
+	public String getEmpId() {
 		return empId;
 	}
 
-	public void setempId(String empId) {
+	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
 
@@ -127,11 +141,7 @@ public class Customer {
 	}
 
 	public void setPassword(String password) {
-		Base64.Encoder encoder = Base64.getEncoder();  
-        String normalString = password;
-        String encodedString = encoder.encodeToString(   // encrypt password in database field
-        normalString.getBytes(StandardCharsets.UTF_8) );
-        this.password = encodedString;
+		this.password = password;
 	}
 
 	public Date getDob() {
@@ -158,4 +168,20 @@ public class Customer {
 		this.isAdmin = isAdmin;
 	}
 
+	public List<CustomerCard> getCustomerCards() {
+		return customerCards;
+	}
+
+	public void setCustomerCards(List<CustomerCard> customerCards) {
+		this.customerCards = customerCards;
+	}
+
+	public List<EmployeeIssue> getEmpIssues() {
+		return empIssues;
+	}
+
+	public void setEmpIssues(List<EmployeeIssue> empIssues) {
+		this.empIssues = empIssues;
+	}
+	
 }
