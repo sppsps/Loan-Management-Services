@@ -13,6 +13,6 @@ public interface CustomerCardRepository extends JpaRepository<CustomerCard, Long
 	
 	//Custom Method to fetch record/object based on email field - non id field.
 			//public List<Optional<CustomerCard>> findByEmpId(String empId);
-	@Query("SELECT cc FROM CustomerCard cc WHERE cc.customer.empId = :empId")
-    List<CustomerCard> findCustomerCardsByEmpId(@Param("empId") String empId);
+//	@Query("SELECT cc FROM CustomerCard cc WHERE cc.customer.empId = :empId")
+//    List<CustomerCard> findCustomerCardsByEmpId(@Param("empId") String empId);
 }

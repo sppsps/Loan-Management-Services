@@ -37,11 +37,13 @@ public class ItemMaster {
 	private List<EmployeeIssue> empIssues = new ArrayList<>();
 
 	public ItemMaster() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public ItemMaster(Long id, String itemId, String itemDescription, Boolean issueStatus, String itemMake,
-			String itemCategory, int itemValuation) {
+			String itemCategory, int itemValuation, List<EmployeeIssue> empIssues) {
+		super();
 		this.id = id;
 		this.itemId = itemId;
 		this.itemDescription = itemDescription;
@@ -49,6 +51,7 @@ public class ItemMaster {
 		this.itemMake = itemMake;
 		this.itemCategory = itemCategory;
 		this.itemValuation = itemValuation;
+		this.empIssues = empIssues;
 	}
 
 	public Long getId() {
@@ -105,6 +108,14 @@ public class ItemMaster {
 
 	public void setItemValuation(int itemValuation) {
 		this.itemValuation = itemValuation;
+	}
+
+	public List<EmployeeIssue> getEmpIssues() {
+		return empIssues;
+	}
+
+	public void setEmpIssues(List<EmployeeIssue> empIssues) {
+		this.empIssues = empIssues;
 	}
 	
 }

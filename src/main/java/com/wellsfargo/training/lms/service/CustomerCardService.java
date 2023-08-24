@@ -37,7 +37,7 @@ public class CustomerCardService {
  		return irepo.findAll(); //Define in JPA repo.
  	}
 	 
-	 public List<CustomerCard> getById(String empId){
-		 return irepo.findCustomerCardsByEmpId(empId);
-	 }
+//	 public List<CustomerCard> getById(String empId){
+//		 return irepo.findCustomerCardsByEmpId(empId);
+//	 }
 }

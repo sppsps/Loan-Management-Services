@@ -80,7 +80,6 @@ public class EmployeeIssueController {
 				//System.out.println(pId);
 				issue.setIssueDate(e.getIssueDate());
 				issue.setIssueId(e.getIssueId());
-				issue.setItemId(e.getItemId());
 				issue.setReturnDate(e.getReturnDate());
 				
 				final EmployeeIssue updatedIssue = eservice.saveIssue(issue);

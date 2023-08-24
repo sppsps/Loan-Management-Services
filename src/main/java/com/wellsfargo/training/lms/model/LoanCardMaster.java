@@ -30,11 +30,13 @@ public class LoanCardMaster {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LoanCardMaster(Long id, String loanId, String loanType, int duration) {
+	public LoanCardMaster(Long id, String loanId, String loanType, int duration, List<CustomerCard> customerCards) {
+		super();
 		this.id = id;
 		this.loanId = loanId;
 		this.loanType = loanType;
 		this.duration = duration;
+		this.customerCards = customerCards;
 	}
 
 	public Long getId() {
@@ -68,5 +70,13 @@ public class LoanCardMaster {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	
+
+	public List<CustomerCard> getCustomerCards() {
+		return customerCards;
+	}
+
+	public void setCustomerCards(List<CustomerCard> customerCards) {
+		this.customerCards = customerCards;
+	}
+
 }

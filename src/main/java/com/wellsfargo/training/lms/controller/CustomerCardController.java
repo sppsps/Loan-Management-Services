@@ -53,14 +53,14 @@ public class CustomerCardController {
 		return p;
 	}
 	
-	@GetMapping("/customer_card/{emp_id}")
-	public List<CustomerCard> getCustomerCardByEmp(@PathVariable(value="id") String eId)
-			throws ResourceNotFoundException{
-		
-				List<CustomerCard> c = pservice.getById(eId);
-		
-		return c;
-	}
+//	@GetMapping("/customer_card/{emp_id}")
+//	public List<CustomerCard> getCustomerCardByEmp(@PathVariable(value="id") String eId)
+//			throws ResourceNotFoundException{
+//		
+//				List<CustomerCard> c = pservice.getById(eId);
+//		
+//		return c;
+//	}
 //	// Postman/Browser --> Controller -->Service -> Repository -> DataBase
 //	// All layers will use Model when required
 //	//Open PostMan, make a GET Request - http://localhost:8085/pms/api/products/

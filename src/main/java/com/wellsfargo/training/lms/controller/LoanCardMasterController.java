@@ -67,6 +67,8 @@ public class LoanCardMasterController {
 				card.setLoanId(p.getLoanId());
 				card.setLoanType(p.getLoanType());
 				
+				if(p.getCustomerCards()!=null) card.setCustomerCards(p.getCustomerCards());
+				
 				final LoanCardMaster updatedLoanCard = lservice.saveLoanCard(card);
 				
 				return ResponseEntity.ok().body(updatedLoanCard);
