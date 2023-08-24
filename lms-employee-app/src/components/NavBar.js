@@ -13,13 +13,14 @@ const NavBar = () => {
 
     return(
       <>
+
       <IconContext.Provider value={{ color: '#fff' }}>
       <div className='navbar'>
         <Link to='#' className='menu-bars'>
           <FaIcons.FaBars onClick={showSidebar} />
         </Link>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 class="heading">Loan Management System</h1>
+        <img src="../images/payday.png" className="App-logo" alt="logo" />
+        <h1 class="heading">Payday Loans</h1>
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-list' onClick={showSidebar}>
@@ -42,7 +43,11 @@ const NavBar = () => {
                 <li className = "nav-item">
                     <Link to="/items" className = "nav-link">Item</Link>
                 </li>
+                <li className = "nav-item">
+                    <Link to="/loan" className = "nav-link">Loan Cards</Link>
+                </li>
                 <li className="nav-item">
+                  {/* <img src="../images/payday.png"></img> */}
                     <Link to="/customers" className="nav-link">Customers Info</Link>
                 </li> 
           </ul>
