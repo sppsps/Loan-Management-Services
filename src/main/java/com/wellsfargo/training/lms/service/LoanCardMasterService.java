@@ -35,9 +35,9 @@ public class LoanCardMasterService {
 		lrepo.deleteById(id);  //defined in JPA repo
 	}
 	
-	public List<ViewLoan> getLoanDetailsForEmp(String empId){
+	public Optional<List<Object[]>> getLoanDetailsForEmp(String empId){
 		
-		return lrepo.getLoanDetailsForEmp(empId);
+		return lrepo.findLoanDetailsByEmpId(empId);
 	}
 	
 	public LoanCardMaster getByLoanId(String empId){

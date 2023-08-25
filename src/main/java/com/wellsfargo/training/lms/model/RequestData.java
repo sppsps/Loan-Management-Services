@@ -32,5 +32,4 @@ public class RequestData {
 		this.itemMaster = itemMaster;
 	}
 	
-	
 }

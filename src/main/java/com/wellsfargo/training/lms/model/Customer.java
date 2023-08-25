@@ -46,9 +46,6 @@ public class Customer {
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date doj;
-	
-	@Column(name="is_admin")
-	private Boolean isAdmin;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CustomerCard> customerCards = new ArrayList<>();
@@ -62,7 +59,7 @@ public class Customer {
 	}
 
 	public Customer(Long id, String empId, String fname, String lname, String desg, String dept, char sex,
-			String password, Date dob, Date doj, Boolean isAdmin, List<CustomerCard> customerCards,
+			String password, Date dob, Date doj, List<CustomerCard> customerCards,
 			List<EmployeeIssue> empIssues) {
 		super();
 		this.id = id;
@@ -75,7 +72,6 @@ public class Customer {
 		this.password = password;
 		this.dob = dob;
 		this.doj = doj;
-		this.isAdmin = isAdmin;
 		this.customerCards = customerCards;
 		this.empIssues = empIssues;
 	}
@@ -141,7 +137,11 @@ public class Customer {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		Base64.Encoder encoder = Base64.getEncoder();  
+        String normalString = password;
+        String encodedString = encoder.encodeToString(   // encrypt password in database field
+        normalString.getBytes(StandardCharsets.UTF_8) );
+        this.password = encodedString;
 	}
 
 	public Date getDob() {
@@ -158,14 +158,6 @@ public class Customer {
 
 	public void setDoj(Date doj) {
 		this.doj = doj;
-	}
-
-	public Boolean getIsAdmin() {
-		return isAdmin;
-	}
-
-	public void setIsAdmin(Boolean isAdmin) {
-		this.isAdmin = isAdmin;
 	}
 
 	public List<CustomerCard> getCustomerCards() {

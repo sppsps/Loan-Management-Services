@@ -1,7 +1,13 @@
 package com.wellsfargo.training.lms.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.wellsfargo.training.lms.model.EmployeeIssue;
 import com.wellsfargo.training.lms.model.ItemMaster;
 
 /**
@@ -21,4 +27,13 @@ public interface ItemMasterRepository extends JpaRepository<ItemMaster, Long> {
        etc.. inbuilt methods of jpa repository for various database operations.
        This interface will be implemented by class automatically
     */
+
+	    @Query("SELECT ei.id, im.itemDescription, im.itemMake, im.itemCategory, im.itemValuation " +
+	           "FROM EmployeeIssue ei " +
+	           "JOIN ei.itemMaster im " +
+	           "JOIN ei.customer c " +
+	           "WHERE c.empId = :empId")
+	    Optional<List<Object[]>> findIssueDetailsByEmpId(@Param("empId") String empId);
+	
+
 }

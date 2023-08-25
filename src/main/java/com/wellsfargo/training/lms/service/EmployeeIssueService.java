@@ -18,6 +18,8 @@ public class EmployeeIssueService {
 	
 	public EmployeeIssue saveIssue(EmployeeIssue e)
 	{
+		e.getCustomer().getEmpIssues().add(e);
+		e.getItemMaster().getEmpIssues().add(e);
 		return esrepo.save(e);
 	}
 	

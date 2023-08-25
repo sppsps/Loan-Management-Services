@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.training.lms.exceptions.ResourceNotFoundException;
+import com.wellsfargo.training.lms.model.ItemMaster;
 import com.wellsfargo.training.lms.model.LoanCardMaster;
 import com.wellsfargo.training.lms.model.ViewLoan;
 import com.wellsfargo.training.lms.service.LoanCardMasterService;
@@ -76,7 +77,12 @@ public class LoanCardMasterController {
 			}
 	
 	@GetMapping("/loans/{empId}")
-    public List<ViewLoan> getLoanDetailsForEmployee(@PathVariable String empId) {
-        return lservice.getLoanDetailsForEmp(empId);
-    }
+	public ResponseEntity<List<Object[]>> getLoanByEmpId(@PathVariable(value="empId") String empId)
+			throws ResourceNotFoundException{
+				
+				List<Object[]> p = lservice.getLoanDetailsForEmp(empId).orElseThrow(() -> 
+				new ResourceNotFoundException("Loans not found for this Id: "+ empId));
+				
+				return ResponseEntity.ok().body(p);
+			}
 }

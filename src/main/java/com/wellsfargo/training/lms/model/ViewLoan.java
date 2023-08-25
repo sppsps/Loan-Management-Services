@@ -3,10 +3,10 @@ package com.wellsfargo.training.lms.model;
 import java.sql.Date;
 
 public class ViewLoan {
-	private String loan_id;
-    private String loan_type;
-    private int loan_duration;
-    private Date issue_date;
+	private String loanId;
+    private String loanType;
+    private int duration;
+    private Date issueDate;
     
     
 
@@ -16,61 +16,63 @@ public class ViewLoan {
 
 
 
-	public ViewLoan(String loan_id, String loan_type, int loan_duration, Date issue_date) {
-        this.loan_id = loan_id;
-        this.loan_type = loan_type;
-        this.loan_duration = loan_duration;
-        this.issue_date = issue_date;
-    }
-
-
-
-	public String getLoan_id() {
-		return loan_id;
+	public ViewLoan(String loanId, String loanType, int duration, Date issueDate) {
+		this.loanId = loanId;
+		this.loanType = loanType;
+		this.duration = duration;
+		this.issueDate = issueDate;
 	}
 
 
 
-	public void setLoan_id(String loan_id) {
-		this.loan_id = loan_id;
+	public String getLoanId() {
+		return loanId;
 	}
 
 
 
-	public String getLoan_type() {
-		return loan_type;
+	public void setLoanId(String loanId) {
+		this.loanId = loanId;
 	}
 
 
 
-	public void setLoan_type(String loan_type) {
-		this.loan_type = loan_type;
+	public String getLoanType() {
+		return loanType;
 	}
 
 
 
-	public int getLoan_duration() {
-		return loan_duration;
+	public void setLoanType(String loanType) {
+		this.loanType = loanType;
 	}
 
 
 
-	public void setLoan_duration(int loan_duration) {
-		this.loan_duration = loan_duration;
+	public int getDuration() {
+		return duration;
 	}
 
 
 
-	public Date getIssue_date() {
-		return issue_date;
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 
 
 
-	public void setIssue_date(Date issue_date) {
-		this.issue_date = issue_date;
+	public Date getIssueDate() {
+		return issueDate;
 	}
-	
+
+
+
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+
+
+
 	
 
 }

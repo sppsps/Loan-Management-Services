@@ -37,14 +37,14 @@ public class EmployeeIssue {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmployeeIssue(Long id, String issueId, String itemId, Date issueDate, Date returnDate, Customer customer) {
-		super();
+	public EmployeeIssue(Long id, String issueId, Date issueDate, Date returnDate, Customer customer,
+			ItemMaster itemMaster) {
 		this.id = id;
 		this.issueId = issueId;
-		//this.itemId = itemId;
 		this.issueDate = issueDate;
 		this.returnDate = returnDate;
 		this.customer = customer;
+		this.itemMaster = itemMaster;
 	}
 
 	public Long getId() {
@@ -85,6 +85,14 @@ public class EmployeeIssue {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public ItemMaster getItemMaster() {
+		return itemMaster;
+	}
+
+	public void setItemMaster(ItemMaster itemMaster) {
+		this.itemMaster = itemMaster;
 	}
 
 	

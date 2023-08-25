@@ -45,5 +45,8 @@ public class ItemMasterService {
 		irepo.deleteById(id);  //defined in JPA repo
 	}
 	
-	
+	public Optional<List<Object[]>> getObjectByEmpId(String empId)
+	{
+		return irepo.findIssueDetailsByEmpId(empId);
+	}
 }

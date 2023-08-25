@@ -13,11 +13,15 @@ import com.wellsfargo.training.lms.model.ViewLoan;
 
 public interface LoanCardMasterRepository extends JpaRepository<LoanCardMaster, Long> {
 
-	@Query("SELECT new com.wellsfargo.training.lms.model.ViewLoan(lcm.loanId, lcm.loanType, lcm.duration, cc.issueDate) " +
-	           "FROM LoanCardMaster lcm " +
-	           "JOIN lcm.customerCards cc " +
-	           "WHERE cc.customer.empId = :empId")
-	    List<ViewLoan> getLoanDetailsForEmp(@Param("empId") String empId);
+
+	    @Query("SELECT lc.loanId, lc.loanType, lc.duration, cc.issueDate " +
+	           "FROM CustomerCard cc " +
+	           "JOIN cc.loanCard lc " +
+	           "JOIN cc.customer c " +
+	           "WHERE c.empId = :empId")
+	    Optional<List<Object[]>> findLoanDetailsByEmpId(@Param("empId") String empId);
+	
+
 
 	public LoanCardMaster findByLoanId(String empId);
 }

@@ -48,19 +48,29 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/login")
-	public Boolean loginCustomer(@Validated @RequestBody Customer customer) throws ResourceNotFoundException
+	public Integer loginCustomer(@Validated @RequestBody Customer customer) throws ResourceNotFoundException
 	{
-		Boolean a = false;
+		
+		String username = "000000";
+		String pwd = "password";
+		
 		String empId = customer.getEmpId();
 		String password  =customer.getPassword();
+		
+		if(empId.equals(username)) {
+			if(pwd.equals(password))
+					return 0;
+			return 2;
+		}
+		
 		Customer d = aservice.loginCustomer(empId).orElseThrow(()->
 		new ResourceNotFoundException("Customer Not Found for this id ::"));
 		//System.out.println(d.getPassword()+password);
 		if(empId.equals(d.getEmpId()) && password.equals(d.getPassword()))
 		{
-			a = true;
+			return 1;
 		}
-		return a;
+		return 2;
 	}
 	@GetMapping("/customers")
 	public List<Customer> getAllCustomers(){

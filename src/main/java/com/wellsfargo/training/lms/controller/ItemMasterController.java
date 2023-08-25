@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wellsfargo.training.lms.exceptions.ResourceNotFoundException;
 import com.wellsfargo.training.lms.model.Customer;
 import com.wellsfargo.training.lms.model.CustomerCard;
+import com.wellsfargo.training.lms.model.EmployeeIssue;
 import com.wellsfargo.training.lms.model.ItemMaster;
 import com.wellsfargo.training.lms.model.LoanCardMaster;
 import com.wellsfargo.training.lms.model.RequestData;
 import com.wellsfargo.training.lms.service.CustomerCardService;
 import com.wellsfargo.training.lms.service.CustomerService;
+import com.wellsfargo.training.lms.service.EmployeeIssueService;
 import com.wellsfargo.training.lms.service.ItemMasterService;
 import com.wellsfargo.training.lms.service.LoanCardMasterService;
 
@@ -50,6 +52,8 @@ public class ItemMasterController {
 	private CustomerService cservice;
 	@Autowired
 	private LoanCardMasterService lservice;
+	@Autowired
+	private EmployeeIssueService eservice;
 	
 	/* ResponseEntity represents an HTTP response, including headers, body, and status.
 	 *  @RequestBody annotation automatically deserializes the JSON into a Java type
@@ -77,11 +81,18 @@ public class ItemMasterController {
 		c.setCustomer(customer);
 		c.setLoanCard(loanCard);
 		c.setIssueDate(Calendar.getInstance().getTime());
-		CustomerCard f = ccservice.saveItem(c);
-		System.out.println(f.getCustomer().getEmpId());
-		System.out.println(f.getLoanCard().getLoanId());
+		ccservice.saveItem(c);
+		
+		
+		
 		ItemMaster itemMaster = data.getItemMaster();
 		ItemMaster p = pservice.saveItem(itemMaster);
+		
+		EmployeeIssue eI = new EmployeeIssue();
+		eI.setCustomer(customer);
+		eI.setIssueDate(Calendar.getInstance().getTime());
+		eI.setItemMaster(data.getItemMaster());
+		eservice.saveIssue(eI);
 		return p;
 	}
 	
@@ -148,4 +159,13 @@ public class ItemMasterController {
 				
 				return response;
 			}
+		@GetMapping("/items_purchased/{id}")
+		public ResponseEntity<List<Object[]>> getObjectById(@PathVariable(value="id") String empId)
+				throws ResourceNotFoundException{
+					
+				List<Object[]> p = pservice.getObjectByEmpId(empId).orElseThrow(() -> 
+					new ResourceNotFoundException("No Purchased items found for this Id: "+ empId));
+					
+					return ResponseEntity.ok().body(p);
+				}
 }
