@@ -12,6 +12,8 @@ import { faTrash, faEdit, faList, faHome,faSignIn, faSignOut, faCameraRetro, faB
 import LoanCard from './components/LoanCard';
 import Loan from './components/Loan';
 import CustomerInfo from './components/Customer';
+import Admin from './components/AdminDashboard';
+import User from './components/UserDashboard';
 
 library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup);
 
@@ -53,7 +55,9 @@ function App() {
               <Route path = 'items' Component={Item}></Route>
               <Route path='/loan' Component={Loan}></Route>
               <Route path = '/customers' Component={CustomerInfo}></Route>
-              
+              <Route path = '/admin' Component={Admin}></Route>
+              <Route path = '/user' Component={User}></Route>
+
             </Routes>
           </Router>
         </div>

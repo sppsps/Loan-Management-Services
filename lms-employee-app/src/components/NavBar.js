@@ -50,6 +50,12 @@ const NavBar = () => {
                   {/* <img src="../images/payday.png"></img> */}
                     <Link to="/customers" className="nav-link">Customers Info</Link>
                 </li> 
+                
+                <li className="nav-item">
+                  {/* <img src="../images/payday.png"></img> */}
+                    <button style={{'backgroundColor':'blue',
+                    'color':'blue'}}><Link to="/login" className="nav-link">Admin</Link></button>
+                </li> 
           </ul>
         </nav>
       </IconContext.Provider>
