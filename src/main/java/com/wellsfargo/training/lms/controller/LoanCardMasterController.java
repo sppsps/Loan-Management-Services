@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.training.lms.exceptions.ResourceNotFoundException;
 import com.wellsfargo.training.lms.model.LoanCardMaster;
+import com.wellsfargo.training.lms.model.ViewLoan;
 import com.wellsfargo.training.lms.service.LoanCardMasterService;
 
 @CrossOrigin(origins ="*")
@@ -73,4 +74,9 @@ public class LoanCardMasterController {
 				
 				return ResponseEntity.ok().body(updatedLoanCard);
 			}
+	
+	@GetMapping("/loans/{empId}")
+    public List<ViewLoan> getLoanDetailsForEmployee(@PathVariable String empId) {
+        return lservice.getLoanDetailsForEmp(empId);
+    }
 }

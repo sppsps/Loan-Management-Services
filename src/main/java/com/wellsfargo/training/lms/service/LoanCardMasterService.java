@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wellsfargo.training.lms.model.ItemMaster;
 import com.wellsfargo.training.lms.model.LoanCardMaster;
+import com.wellsfargo.training.lms.model.ViewLoan;
 import com.wellsfargo.training.lms.repository.LoanCardMasterRepository;
 
 @Service
@@ -32,6 +33,11 @@ public class LoanCardMasterService {
 	 
 	public void deleteItem(long id) {
 		lrepo.deleteById(id);  //defined in JPA repo
+	}
+	
+	public List<ViewLoan> getLoanDetailsForEmp(String empId){
+		
+		return lrepo.getLoanDetailsForEmp(empId);
 	}
 	
 }

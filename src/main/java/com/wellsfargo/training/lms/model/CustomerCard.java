@@ -9,11 +9,6 @@ import lombok.*;
 
 @Entity
 @Table(name="customer_card")
-@NoArgsConstructor
-@RequiredArgsConstructor
-@Getter
-@Setter
-@ToString
 public class CustomerCard {
 
 	@SequenceGenerator(name="product_seq",initialValue = 1000, allocationSize=1)
