@@ -25,7 +25,7 @@ function CustomerInfo() {
           console.error("Error fetching Customer info:", error);
         }
       };
-
+      
       return (
         <> <br/>
         <div>

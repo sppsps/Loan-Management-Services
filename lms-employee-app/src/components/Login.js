@@ -39,7 +39,7 @@ const Login = () => {
       if (loginSuccess) {
         setSuccessMessage('Login successful. Redirecting...');
         setTimeout(() => {
-          history('/items'); // navigates to product Component
+          history('/admin'); // navigates to product Component
         }, 2000);
       } else {
         setErrorMessage('Invalid empId or password.');
