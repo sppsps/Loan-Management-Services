@@ -36,10 +36,16 @@ const Login = () => {
   try {
       const loginSuccess = await AuthenticationService.login(dealer);
       console.log('API response:', loginSuccess.data); // Add this line
-      if (loginSuccess) {
+      console.log(loginSuccess);
+      if (loginSuccess!=2) {
         setSuccessMessage('Login successful. Redirecting...');
         setTimeout(() => {
+          if (loginSuccess==1){
           history('/user'); // navigates to product Component
+          }
+          else{
+            history('/admin')
+          }
         }, 2000);
       } else {
         setErrorMessage('Invalid empId or password.');

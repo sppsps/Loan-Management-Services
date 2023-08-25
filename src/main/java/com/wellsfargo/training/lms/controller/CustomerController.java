@@ -52,14 +52,18 @@ public class CustomerController {
 	{
 		
 		String username = "000000";
-		String pwd = "password";
+		String pwd = "111111";
 		
 		String empId = customer.getEmpId();
 		String password  =customer.getPassword();
-		
+//		System.out.println(empId);
+
 		if(empId.equals(username)) {
-			if(pwd.equals(password))
+//			System.out.println(empId);
+			if(password.equals(pwd)) {
+//				System.out.println(empId);
 					return 0;
+			}
 			return 2;
 		}
 		

@@ -15,12 +15,12 @@ class AuthenticationService {
         try {
             const response = await axios.post('http://localhost:8090/paydayloans/api/login', dealer);
             console.log('SAPI response:', response.data +"Hello"+response.data.success); 
-            if (response.data === true) {
+            if (response.data !== 2) {
                 // Call the setSessionAttribute method to store the session token or user info
                 this.setSessionAttribute('sessionToken', response.data.sessionToken); // Adjust as needed
-                return true; // Return true for successful login
+                return response.data; // Return true for successful login
             } else {
-                return false; // Return false for unsuccessful login
+                return 2; // Return false for unsuccessful login
             }
             } catch (error) {
                 console.error('Login error', error);

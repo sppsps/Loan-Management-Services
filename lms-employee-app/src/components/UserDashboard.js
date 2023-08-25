@@ -14,6 +14,7 @@ const User = () => {
 
     return(
         <div className='admin'>
+            {/* <header>Loan Management System</header> */}
             <h1>Hello Customer</h1>
 
             <section className="features">
