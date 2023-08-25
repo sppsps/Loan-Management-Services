@@ -28,8 +28,11 @@ public class CustomerCardService {
 	@Autowired
 	private CustomerCardRepository irepo;
 	
-	public CustomerCard saveItem(CustomerCard p) {
-		return irepo.save(p);   // Invokes save() method predefined in JPA repo
+	public CustomerCard saveItem(CustomerCard product) {
+//		product.getCustomer().getCustomerCards().add(product);
+//		product.getLoanCard().getCustomerCards().add(product);
+		System.out.println("Hi");
+		return irepo.save(product);   // Invokes save() method predefined in JPA repo
 	}
 	
 	 public List<CustomerCard> listAll(){

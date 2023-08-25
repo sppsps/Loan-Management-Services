@@ -1,6 +1,6 @@
 package com.wellsfargo.training.lms.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -34,12 +34,11 @@ public class CustomerCard {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerCard(Long id, Date issueDate, String loanId, Customer customer) {
-		super();
+	public CustomerCard(Long id, Date issueDate, Customer customer, LoanCardMaster loanCard) {
 		this.id = id;
 		this.issueDate = issueDate;
-		//this.loanId = loanId;
 		this.customer = customer;
+		this.loanCard = loanCard;
 	}
 
 	public Long getId() {
@@ -58,7 +57,6 @@ public class CustomerCard {
 		this.issueDate = issueDate;
 	}
 
-
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -66,5 +64,15 @@ public class CustomerCard {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+	public LoanCardMaster getLoanCard() {
+		return loanCard;
+	}
+
+	public void setLoanCard(LoanCardMaster loanCard) {
+		this.loanCard = loanCard;
+	}
+
+	
 	
 }

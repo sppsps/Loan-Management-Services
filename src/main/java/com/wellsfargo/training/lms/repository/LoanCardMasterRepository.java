@@ -2,6 +2,7 @@ package com.wellsfargo.training.lms.repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,4 +18,6 @@ public interface LoanCardMasterRepository extends JpaRepository<LoanCardMaster, 
 	           "JOIN lcm.customerCards cc " +
 	           "WHERE cc.customer.empId = :empId")
 	    List<ViewLoan> getLoanDetailsForEmp(@Param("empId") String empId);
+
+	public LoanCardMaster findByLoanId(String empId);
 }

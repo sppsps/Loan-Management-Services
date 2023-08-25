@@ -37,4 +37,9 @@ public class CustomerService {
 		//System.out.println(arepo.findByEmail(email));
 		return arepo.findByEmpId(email);
 	}
+	
+	public Optional<Customer> getByEmpId(String empId)
+	{
+		return arepo.findByEmpId(empId);
+	}
 }

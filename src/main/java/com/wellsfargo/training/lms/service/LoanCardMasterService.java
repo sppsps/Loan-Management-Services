@@ -40,4 +40,9 @@ public class LoanCardMasterService {
 		return lrepo.getLoanDetailsForEmp(empId);
 	}
 	
+	public LoanCardMaster getByLoanId(String empId){
+		
+		return lrepo.findByLoanId(empId);
+	}
+	
 }

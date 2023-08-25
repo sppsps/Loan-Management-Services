@@ -1,5 +1,7 @@
 package com.wellsfargo.training.lms.controller;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +20,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.training.lms.exceptions.ResourceNotFoundException;
+import com.wellsfargo.training.lms.model.Customer;
+import com.wellsfargo.training.lms.model.CustomerCard;
 import com.wellsfargo.training.lms.model.ItemMaster;
+import com.wellsfargo.training.lms.model.LoanCardMaster;
+import com.wellsfargo.training.lms.model.RequestData;
+import com.wellsfargo.training.lms.service.CustomerCardService;
+import com.wellsfargo.training.lms.service.CustomerService;
 import com.wellsfargo.training.lms.service.ItemMasterService;
+import com.wellsfargo.training.lms.service.LoanCardMasterService;
 
 /*Spring RestController annotation is used to create RESTful web services using Spring MVC. 
  * Spring RestController takes care of mapping request data to the defined request handler method. 
@@ -35,6 +44,12 @@ public class ItemMasterController {
 
 	@Autowired
 	private ItemMasterService pservice;
+	@Autowired
+	private CustomerCardService ccservice;
+	@Autowired
+	private CustomerService cservice;
+	@Autowired
+	private LoanCardMasterService lservice;
 	
 	/* ResponseEntity represents an HTTP response, including headers, body, and status.
 	 *  @RequestBody annotation automatically deserializes the JSON into a Java type
@@ -44,9 +59,29 @@ public class ItemMasterController {
     //Select body -> raw -> JSON 
     //Insert JSON product object.
 	@PostMapping("/item_master")
-	public ItemMaster saveItemMaster(@Validated @RequestBody ItemMaster product) {
-		ItemMaster p=pservice.saveItem(product);
-		System.out.println(product.getItemDescription());
+	public ItemMaster saveItemMaster(@Validated @RequestBody RequestData data) throws ResourceNotFoundException {
+//		CustomerCard c = new CustomerCard();
+//		c.setCustomer(customer);
+//		c.setLoanCard(loanCard);
+//		c.setIssueDate(Calendar.getInstance().getTime());
+		
+//		ccservice.saveItem(c);
+//		ItemMaster p=pservice.saveItem(product);
+//		System.out.println(product.getItemDescription());
+//		return p;
+		Customer customer = cservice.getByEmpId(data.getEmpId()).orElseThrow(()->
+		new ResourceNotFoundException("Customer Not Found for this id ::"));
+		
+		LoanCardMaster loanCard = lservice.getByLoanId(data.getLoanId());
+		CustomerCard c = new CustomerCard();
+		c.setCustomer(customer);
+		c.setLoanCard(loanCard);
+		c.setIssueDate(Calendar.getInstance().getTime());
+		CustomerCard f = ccservice.saveItem(c);
+		System.out.println(f.getCustomer().getEmpId());
+		System.out.println(f.getLoanCard().getLoanId());
+		ItemMaster itemMaster = data.getItemMaster();
+		ItemMaster p = pservice.saveItem(itemMaster);
 		return p;
 	}
 	

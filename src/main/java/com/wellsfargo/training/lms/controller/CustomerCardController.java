@@ -50,6 +50,7 @@ public class CustomerCardController {
 	public CustomerCard saveCustomerCard(@Validated @RequestBody CustomerCard product) {
 		System.out.println(product.getCustomer());
 		CustomerCard p=pservice.saveItem(product);
+		
 		return p;
 	}
 	
