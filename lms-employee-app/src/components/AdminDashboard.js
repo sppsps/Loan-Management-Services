@@ -1,5 +1,5 @@
 import React from 'react'
-import '../style/AdminDashboard.css'
+import '../style/Dashboard.css'
 import {useNavigate} from 'react-router-dom';
 
 
