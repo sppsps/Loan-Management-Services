@@ -123,8 +123,8 @@ public class CustomerController {
 				c.setDob(e.getDob());
 				c.setDoj(e.getDoj());
 				c.setFname(e.getFname());
-				if(e.getCustomerCards()!=null) c.setCustomerCards(e.getCustomerCards());
-				if(e.getEmpIssues()!=null) c.setEmpIssues(e.getEmpIssues());
+//				if(e.getCustomerCards()!=null) c.setCustomerCards(e.getCustomerCards());
+//				if(e.getEmpIssues()!=null) c.setEmpIssues(e.getEmpIssues());
 				
 				final Customer updatedCustomer = aservice.registerCustomer(c);
 				
