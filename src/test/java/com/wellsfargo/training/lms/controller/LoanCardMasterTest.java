@@ -130,8 +130,5 @@ class LoanCardMasterTest {
         verify(lservice, times(1)).saveLoanCard(l1);
     }
     
-    
-
-    // Add tests for other functions as needed
 
 }

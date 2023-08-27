@@ -135,5 +135,4 @@ public class EmployeeIssueControllerTest {
         verify(service, times(1)).saveIssue(any(EmployeeIssue.class));
     }
 
-    // Add more test cases for other controller methods
 }

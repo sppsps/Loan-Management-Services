@@ -86,6 +86,4 @@ public class CustomerCardControllerTest {
 
         verify(service, times(1)).listAll();
     }
-
-    // Add more test cases for other controller methods
 }
