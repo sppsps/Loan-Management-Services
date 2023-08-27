@@ -3,6 +3,7 @@ package com.wellsfargo.training.lms.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -81,6 +82,18 @@ public class CustomerController {
 		return aservice.getAll();
 	}
 	
+	@GetMapping("customers/{id}")
+	public ResponseEntity<Customer> getCustomer(@PathVariable(value="id") String empId)
+			throws ResourceNotFoundException{
+		
+		Optional<Customer> customer = aservice.getByEmpId(empId);
+	    if (customer.isPresent()) {
+	        return ResponseEntity.ok(customer.get());
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+	
 	
 	@DeleteMapping("/customers/{id}")
 	public Map<String, Boolean> deleteCustomer(@PathVariable(value="id") Long pId)
@@ -117,4 +130,5 @@ public class CustomerController {
 				
 				return ResponseEntity.ok().body(updatedCustomer);
 			}
+	
 }
