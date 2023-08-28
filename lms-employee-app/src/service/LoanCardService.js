@@ -18,6 +18,7 @@ class LoanCardService{
     }
 
     static updateLoancard(Loancard,LoancardId){
+        console.log("service")
         return axios.put(LOANCARD_REST_API_URL+'/'+LoancardId,Loancard);
     }
 

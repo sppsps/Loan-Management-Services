@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom"
 import LoanCardService from "../service/LoanCardService";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 // import { Button, Row } from 'react-bootstrap'
 // import { Card } from '@material-ui/core';
@@ -57,32 +59,31 @@ function Loan(props){
         });
     };
 
-    // const addProduct = () => {
-    //     history('/addProduct/_add'); // Load Component createproduct and pass '_add' as parameter
-    // };
+    const addLoanCard = () => {
+      history('/addLoanCard/_add'); // Load Component createproduct and pass '_add' as parameter
+  };
 
 
 
-    // const editProduct = (id) => {
-    //     history(`/addProduct/${id}`); // use back Quote operator
-    // };
+  const editLoanCard = (id) => {
+      history(`/addLoanCard/${id}`); // use back Quote operator
+  };
 
-    // const deleteProduct = (id) => {
-    //     ProductService.deleteProduct(id).then(() => {
-    //        // setProducts(products.filter(product => product.id !== id));
-    //        fetchProducts(); // Refresh products list
-    //         setMessage('Product deleted successfully.'); 
-    //          // Clear the message after 3 seconds
-    //          setTimeout(() => {
-    //             setMessage('');
-    //         }, 2000);
-    //     });
-    // };
+  const deleteLoanCard = (id) => {
+      LoanCardService.deleteLoancard(id).then(() => {
+         // setProducts(products.filter(product => product.id !== id));
+         fetchLoancards(); // Refresh products list
+          setMessage('Product deleted successfully.'); 
+           // Clear the message after 3 seconds
+           setTimeout(() => {
+              setMessage('');
+          }, 2000);
+      });
+  };
 
-    // const viewProduct = (id) => {
-    //     history(`/viewProduct/${id}`);
-    // };
-
+  const viewLoanCard = (id) => {
+      history(`/viewLoanCard/${id}`);
+  };
 
     /*We are using the map operator to loop over our products list and create the view
     */
@@ -145,17 +146,60 @@ function Loan(props){
             //     </div>
             //     {message && <div className="alert alert-success">{message}</div>}
             // </div>
-
+            
             <div className="container-fluid">
+              <h2>Available Loan cards</h2>
+              <br/>
+                     <div className = "row justify-content-center">
+                      <button className="btn btn-info w-auto" onClick={addLoanCard}>Add Loan Card</button>
+                     </div>
+                 <br/>
             <div className="row">
               {loancards.map(loancard => (
                 <div className="col-md-4" key={loancard.loanId}>
-                  <LoanCard
+                  {/* <LoanCard
                     type={loancard.loanType}
                     duration={loancard.duration}    
-                  />
+                  /> */}
+
+                  <div className="card" style={{ margin: "10px" }}>
+          {/* <img src= '../images/furniture.jpg'
+          className="card-img-top" alt={"image"} /> */}
+                    <img src={(loancard.loanType === "Furniture") ? '../images/furniture.jpg' : ((loancard.loanType === "Crockery") ? '../images/crockery.jpg' : (loancard.loanType === "Automobile") ? '../images/automobile.jpg' : (loancard.loanType === "Medical") ? '../images/medical.jpg' : (loancard.loanType === "Ornaments") ? '../images/jewellery.jpg' : '../images/payday.jpg')}
+            className="card-img-top" alt={"image"} style={{
+              "height": "200px",
+              "marginBottom": "10px",
+              "borderRadius": "10px"
+            }} />
+                  <div className="card-body">
+                    <h5 className="card-title">{loancard.loanType}</h5>
+                    <p className="card-text">Duration : {loancard.duration} Years</p>
+
+                    <a href="#" className="btn btn-primary">
+                      Get Now
+                    </a>
+                    &nbsp;
+                    <button className="btn btn-success" onClick={() => {console.log("clicked"); editLoanCard(loancard.id)}}>
+                      <span>
+                        <FontAwesomeIcon icon="edit"></FontAwesomeIcon>
+                      </span>
+                    </button>
+                    &nbsp;
+                    <button className="btn btn-danger" onClick={() => deleteLoanCard(loancard.id)}>
+                      <span>
+                        <FontAwesomeIcon icon="trash"></FontAwesomeIcon>
+                      </span>
+                    </button>
+                    &nbsp;
+                    <button className="btn btn-primary" onClick={() => viewLoanCard(loancard.id)}>
+                      <span>
+                        <FontAwesomeIcon icon="list"></FontAwesomeIcon>
+                      </span>
+                    </button>
+                  </div>
                 </div>
-              ))}
+              </div>
+            ))}
             </div>
           </div>
         );

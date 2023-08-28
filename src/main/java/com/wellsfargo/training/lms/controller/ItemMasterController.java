@@ -63,7 +63,7 @@ public class ItemMasterController {
     //Select body -> raw -> JSON 
     //Insert JSON product object.
 	@PostMapping("/item_master")
-	public ItemMaster saveItemMaster(@Validated @RequestBody RequestData data) throws ResourceNotFoundException {
+	public ResponseEntity<ItemMaster> saveItemMaster(@Validated @RequestBody RequestData data) throws ResourceNotFoundException {
 //		CustomerCard c = new CustomerCard();
 //		c.setCustomer(customer);
 //		c.setLoanCard(loanCard);
@@ -93,7 +93,15 @@ public class ItemMasterController {
 		eI.setIssueDate(Calendar.getInstance().getTime());
 		eI.setItemMaster(data.getItemMaster());
 		eservice.saveIssue(eI);
-		return p;
+		if(p!=null) return ResponseEntity.ok(p);
+		return ResponseEntity.notFound().build();
+	}
+	
+	
+	@PostMapping("/item_master/admin")
+	public ItemMaster saveForAdmin(@Validated @RequestBody ItemMaster itemMaster)throws ResourceNotFoundException
+	{
+		return pservice.saveItem(itemMaster);
 	}
 	
 	// Postman/Browser --> Controller -->Service -> Repository -> DataBase
