@@ -1,11 +1,10 @@
 import '../style/DropDown.css';
-
-
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import AuthenticationService from "../service/AuthenticationService";
 import { Link } from 'react-router-dom';
 
 const Dropdown = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
   const handleLogout = () => {
@@ -26,7 +25,7 @@ const Dropdown = () => {
         <div className="dropdown-content">
           <ul>
             <li><Link to='/profile' className='dropdown-item'>Profile</Link></li>
-            <li><Link to='/details' className='dropdown-item'>Update Profile</Link></li>
+            <li><Link to='/addCustomer:id' className='dropdown-item'>Update Profile</Link></li>
             <li>
             <Link to="/logout" className='dropdown-item' onClick={handleLogout}>Logout</Link>
             </li>
