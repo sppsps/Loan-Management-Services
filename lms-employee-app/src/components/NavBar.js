@@ -46,13 +46,13 @@ const handleLogout = () => {
               <Link to="/" className = "nav-link">                   
               <span><FontAwesomeIcon icon = "home"></FontAwesomeIcon></span> &nbsp; Home</Link>
             </li>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                     <Link to="/logout" className="nav-link" onClick={handleLogout}>
                     <span>
                         <FontAwesomeIcon icon="sign-out"></FontAwesomeIcon>
                     </span> 
                     &nbsp;Logout</Link>
-                </li>  */}
+                </li> 
                 </>
                 ):(<>
 
