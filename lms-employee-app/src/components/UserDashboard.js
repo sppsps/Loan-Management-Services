@@ -22,7 +22,7 @@ const User = () => {
           console.error("Error fetching Customer info:", error);
         }
       };
-  
+    const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
     const loanCards = () => {
         history('/loan');
     };
@@ -31,6 +31,8 @@ const User = () => {
     };
     const history = useNavigate();
     return(
+      <>
+      {isUserLoggedIn?(
         <div className='admin'>
             {/* <head er>Loan Management System</header> */}
             <h1>Hello {user.fname}&nbsp;{user.lname} </h1>
@@ -52,7 +54,13 @@ const User = () => {
                 </div>
                 </section>
               </div>
-
+      ):(
+        <div>
+        <h1>Login please</h1>
+        </div>
+      )
+      }
+    </>
     );
 }
 

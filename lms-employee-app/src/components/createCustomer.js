@@ -55,8 +55,12 @@ function CreateCustomer(){
         } else {
             // console.log("caretae");
             CustomerService.updateCustomer(Customer, id).then(() => {
-
+                if (Customer.empId==='000000'){
                 navigate('/customers');
+                }
+                else{
+                    navigate('/profile')
+                }
             });
         }
     };

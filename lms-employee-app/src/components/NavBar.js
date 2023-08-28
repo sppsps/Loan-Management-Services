@@ -51,9 +51,6 @@ const handleLogout = () => {
               <Link to="/" className = "nav-link">                   
               <span><FontAwesomeIcon icon = "home"></FontAwesomeIcon></span> &nbsp; Home</Link>
             </li>
-            <li><Link to="/user" className = "nav-link">
-            <span><FontAwesomeIcon icon = "coffee"></FontAwesomeIcon></span> &nbsp;Dashboard</Link>                   
-            </li>
                 <li className="nav-item">
                     <Link to="/logout" className="nav-link" onClick={handleLogout}>
                     <span>

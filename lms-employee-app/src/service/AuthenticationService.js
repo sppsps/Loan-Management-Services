@@ -91,6 +91,11 @@ static async registerCustomer(dealer) {
     if (user === null) return false
     return true
 }
+static isAdmin() {
+  let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
+  if (user === '000000') return 1
+  return 0
+}
 
 static getLoggedInUserName() {
     let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)

@@ -4,7 +4,23 @@ import AuthenticationService from "../service/AuthenticationService";
 import { Link } from 'react-router-dom';
 
 const Dropdown = () => {
+  const [user,setUser]=useState({});
+  const isAdmin= AuthenticationService.isAdmin();
 
+  useEffect(() => {
+      fetchCustomerInfo();
+      // setUser(AuthenticationService.getLoggedInUserName());
+    }, []);
+    const fetchCustomerInfo = async () => {
+      try {
+        const data = await AuthenticationService.getLoggedInUserDetails();
+        // console.log("data"+data.fname);
+        setUser(data);
+        console.log(user);
+      } catch (error) {
+        console.error("Error fetching Customer info:", error);
+      }
+    };
   const [isOpen, setIsOpen] = useState(false);
   const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
   const handleLogout = () => {
@@ -14,7 +30,7 @@ const Dropdown = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
+  const path='/addCustomer/'+user.empId;
   return (
     <div className="profile-dropdown">
       <div className="profile-icon" onClick={toggleDropdown}>
@@ -25,7 +41,12 @@ const Dropdown = () => {
         <div className="dropdown-content">
           <ul>
             <li><Link to='/profile' className='dropdown-item'>Profile</Link></li>
-            <li><Link to='/addCustomer:id' className='dropdown-item'>Update Profile</Link></li>
+            {isAdmin?(
+              <li><Link to='/admin' className='dropdown-item'>Admin Dashboard</Link></li>
+            ):(
+              <li><Link to='/user' className='dropdown-item'>User Dashboard</Link></li>
+            )}
+            <li><Link to={path} className='dropdown-item'>Update Profile</Link></li>
             <li>
             <Link to="/logout" className='dropdown-item' onClick={handleLogout}>Logout</Link>
             </li>
