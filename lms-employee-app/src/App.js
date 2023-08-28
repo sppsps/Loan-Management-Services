@@ -14,6 +14,8 @@ import Loan from './components/Loan';
 import CustomerInfo from './components/Customer';
 import Admin from './components/AdminDashboard';
 import User from './components/UserDashboard';
+import CreateLoanCard from './components/CreateLoanCard';
+import ViewLoanCard from './components/ViewLoanCard';
 
 library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup);
 
@@ -57,6 +59,10 @@ function App() {
               <Route path = '/customers' Component={CustomerInfo}></Route>
               <Route path = '/admin' Component={Admin}></Route>
               <Route path = '/user' Component={User}></Route>
+
+              {/* <Route path='/viewLoanCard/:id' element={<ViewProduct/>}></Route> */}
+              <Route path='/addLoanCard/:id' element={<CreateLoanCard/>}></Route>
+              <Route path='/viewLoanCard/:id' element={<ViewLoanCard/>}></Route>
 
             </Routes>
           </Router>

@@ -23,7 +23,7 @@ import com.wellsfargo.training.lms.model.LoanCardMaster;
 import com.wellsfargo.training.lms.model.ViewLoan;
 import com.wellsfargo.training.lms.service.LoanCardMasterService;
 
-@CrossOrigin(origins ="*")
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api")
 public class LoanCardMasterController {
@@ -57,6 +57,17 @@ public class LoanCardMasterController {
 			
 			return response;
 		}
+	
+	@GetMapping("/loan_card/{id}")
+	public ResponseEntity<LoanCardMaster> getLoanCardById(@PathVariable(value="id") Long pId)
+			throws ResourceNotFoundException{
+				
+				LoanCardMaster card = lservice.getSingleItem(pId).orElseThrow(() -> 
+				new ResourceNotFoundException("Loan Card not found for this Id: "+ pId));
+				System.out.println(pId);
+				return ResponseEntity.ok().body(
+						card);
+	}
 	@PutMapping("/loan_card/{id}")
 	public ResponseEntity<LoanCardMaster> updateLoanCard(@PathVariable(value="id") Long pId,
 			@Validated @RequestBody LoanCardMaster p)
@@ -69,7 +80,7 @@ public class LoanCardMasterController {
 				card.setLoanId(p.getLoanId());
 				card.setLoanType(p.getLoanType());
 				
-				if(p.getCustomerCards()!=null) card.setCustomerCards(p.getCustomerCards());
+//				if(p.getCustomerCards()!=null) card.setCustomerCards(p.getCustomerCards());
 				
 				final LoanCardMaster updatedLoanCard = lservice.saveLoanCard(card);
 				
