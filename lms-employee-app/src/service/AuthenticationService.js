@@ -76,6 +76,16 @@ static async registerCustomer(dealer) {
         throw error;
       });
   }
+
+  static async getItemsPurchased() {
+    return axios.get('http://localhost:8090/paydayloans/api/items_purchased/12')
+      .then((response) => response.data)
+      .catch((error) => {
+        console.error("Error fetching Items purchased info:", error);
+        throw error;
+      });
+  }
+
  static isUserLoggedIn() {
     let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
     if (user === null) return false

@@ -1,9 +1,14 @@
 .navbar {
   background-color:#468B97;
+  position: relative;
   color: white;
   display: flex;
   justify-content: start;
   align-items: center;
+}
+.navbar button {
+  /* position: absolute; */
+  margin-left: auto;
 }
 
 .App-logo {
