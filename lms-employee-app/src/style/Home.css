@@ -1,0 +1,15 @@
+.Heading {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    /* color:rgb(39, 180, 88) */
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .Heading:hover {
+    transform: scale(1.02);
+    color: #0015ff; /* Change the color on hover */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3); /* Adjust the shadow on hover */
+  }

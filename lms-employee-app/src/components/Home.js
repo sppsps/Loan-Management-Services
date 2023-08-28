@@ -1,4 +1,5 @@
 import React from 'react'
+import '../style/Home.css'
 
 
 const Home = () => {
@@ -7,16 +8,27 @@ const Home = () => {
                 // display:'flex',
                 justifyContent:'center',
                 color:'black',
-                height:'100px'
+                height:'100px',
+                marginTop:'25px',
+                marginLeft:'100px',
+                marginRight:'100px',
                     }}>
-            <h1>LMS is a application to provide Loans for employees of our organization</h1>
-            <p>In finance, a loan is the transfer of money by one party to another with an agreement to pay it back. The recipient, or borrower, incurs a debt and is usually required to pay interest for the use of the money.
+            <h2 className='Heading'>
+                    Loan Management System (LMS): Empowering Employee Financial Support
+            </h2>
+            <p>The Loan Management System (LMS) is a robust application designed to facilitate efficient loan provisioning for employees within our organization. In the realm of finance, a loan signifies the transfer of funds from one party to another, encompassing an agreement for repayment. The recipient, or borrower, assumes a financial obligation, often accompanied by interest charges to compensate for fund usage.
 
-The document evidencing the debt (e.g., a promissory note) will normally specify, among other things, the principal amount of money borrowed, the interest rate the lender is charging, and the date of repayment. A loan entails the reallocation of the subject asset(s) for a period of time, between the lender and the borrower.
+The documentation substantiating this debt, such as a promissory note, outlines pivotal details, including the principal borrowed amount, the lender's applicable interest rate, and the stipulated repayment date. A loan entails the temporary reassignment of the involved asset(s) between the lender and borrower.
 
-The interest provides an incentive for the lender to engage in the loan. In a legal loan, each of these obligations and restrictions is enforced by contract, which can also place the borrower under additional restrictions known as loan covenants. Although this article focuses on monetary loans, in practice, any material object might be lent.
+Interest serves as an incentivizing factor for lenders to participate in loan transactions. Legal loans are governed by contractual obligations and constraints, which may impose supplementary restrictions referred to as loan covenants. Notably, this discourse primarily addresses financial loans, although, in practicality, virtually any tangible item could potentially be lent.
 
-Acting as a provider of loans is one of the main activities of financial institutions such as banks and credit card companies. For other institutions, issuing of debt contracts such as bonds is a typical source of funding.</p>
+Acting as loan providers constitutes a central function of financial entities, notably including banks and credit card companies. For diverse institutions, the issuance of debt instruments like bonds represents a conventional avenue for securing financial resources.
+
+
+
+
+
+</p>
         </div>
     );
 }

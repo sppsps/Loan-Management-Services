@@ -1,9 +1,10 @@
 .navbar {
-  background-color:#468B97;
+  /* background-color:#468B97; */
+  background: linear-gradient(to bottom, #59f3ba, #468B97);
   color: white;
   display: flex;
   justify-content: start;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .App-logo {
@@ -80,6 +81,7 @@
 .heading {
   font-size: 6vh;
   text-align: center;
+  margin-left: 100px;
 }
 .navbar-toggle {
   background-color: #060b26;
