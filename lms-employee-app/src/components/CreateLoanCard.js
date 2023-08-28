@@ -39,13 +39,21 @@ function CreateLoanCard(){
                 navigate('/loan');
             });
         } else {
+            console.log("caretae");
             LoanCardService.updateLoancard(loancard, id).then(() => {
+
                 navigate('/loan');
             });
         }
     };
 
         //handlers
+
+    const changeLoanIdHandler = (event) => {
+        setLoanId(event.target.value);
+    };
+
+
     const changeTypeHandler = (event) => {
         setType(event.target.value);
     };
@@ -80,7 +88,7 @@ function CreateLoanCard(){
                                     <div className = "form-group">
                                         <label> Loan Id: </label>
                                         <input placeholder="Loan Id" name="loanId" className="form-control" 
-                                            value={loanId}/>
+                                            value={loanId} onChange={changeLoanIdHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Type: </label>
