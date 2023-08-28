@@ -41,38 +41,40 @@ function App() {
       </header> */}
 
       <section>
-        <div style={{ backgroundImage: "url(/images/background.png)",
-                    backgroundRepeat: 'no-repeat',
-                    // display:'flex',
-                    backgroundSize:'cover', minHeight:'100vh',minWidth:'100vw'}}>
-          <Router>
-            <NavBar>
+        <div></div>
+          <div style={{ backgroundImage: "url(/images/background.png)",
+                      backgroundRepeat: 'repeat-y',
+                      // display:'flex',
+                      backgroundSize:'cover', minHeight:'250vh',minWidth:'100vw'}}>
+            <Router>
+              <NavBar>
 
-            </NavBar>
+              </NavBar>
 
-            <Routes>
-              <Route path = '/' exact Component={Home}></Route>
-              <Route path = 'register' Component={Register}></Route>
-              <Route path = 'login' Component={Login}></Route>
-              <Route path = 'items' Component={Item}></Route>
-              <Route path='/loan' Component={Loan}></Route>
-              <Route path = '/customers' Component={CustomerInfo}></Route>
-              <Route path = '/admin' Component={Admin}></Route>
-              <Route path = '/user' Component={User}></Route>
+              <Routes>
+                <Route path = '/' exact Component={Home}></Route>
+                <Route path = 'register' Component={Register}></Route>
+                <Route path = 'login' Component={Login}></Route>
+                <Route path = 'items' Component={Item}></Route>
+                <Route path='/loan' Component={Loan}></Route>
+                <Route path = '/customers' Component={CustomerInfo}></Route>
+                <Route path = '/admin' Component={Admin}></Route>
+                <Route path = '/user' Component={User}></Route>
 
-              {/* <Route path='/viewLoanCard/:id' element={<ViewProduct/>}></Route> */}
-              <Route path='/addLoanCard/:id' element={<CreateLoanCard/>}></Route>
-              <Route path='/viewLoanCard/:id' element={<ViewLoanCard/>}></Route>
+                {/* <Route path='/viewLoanCard/:id' element={<ViewProduct/>}></Route> */}
+                <Route path='/addLoanCard/:id' element={<CreateLoanCard/>}></Route>
+                <Route path='/viewLoanCard/:id' element={<ViewLoanCard/>}></Route>
 
-            </Routes>
-          </Router>
-        </div>
-      </section>
+              </Routes>
+            </Router>
+          </div>
+        </section>
 
-      <footer className='footer'>
-        <p>&copy; All rights reserved to Wells Fargo</p>
-      </footer>
-    </div>
+        <footer className='footer'>
+          
+          <p>&copy; All rights reserved to Wells Fargo</p>
+        </footer>
+      </div>
   );
 }
 

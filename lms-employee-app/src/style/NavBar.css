@@ -4,6 +4,9 @@
   color: white;
   display: flex;
   justify-content: start;
+  position: sticky; /* Set the navbar to stick to the top */
+  top: 0; /* Position it at the top */
+  z-index: 100;
   /* align-items: center; */
 }
 
@@ -79,9 +82,14 @@
 }
 
 .heading {
-  font-size: 6vh;
+  font-size: 7vh;
   text-align: center;
-  margin-left: 100px;
+  margin-left: 0 auto;
+  background-image: linear-gradient(45deg, #ea5d0c, #3737ed);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-family: 'Poppins', sans-serif;;
 }
 .navbar-toggle {
   background-color: #060b26;
