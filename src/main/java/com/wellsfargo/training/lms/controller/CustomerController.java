@@ -111,18 +111,20 @@ public class CustomerController {
 		}
 	
 	@PutMapping("/customers/{id}")
-	public ResponseEntity<Customer> updateCustomer(@PathVariable(value="id") Long pId,
+	public ResponseEntity<Customer> updateCustomer(@PathVariable(value="id") String empId,
 			@Validated @RequestBody Customer e)
 			throws ResourceNotFoundException{
 				
-				Customer c = aservice.getOne(pId).orElseThrow(() -> 
-				new ResourceNotFoundException("Customer not found for this Id: "+ pId));
+				Customer c = aservice.getByEmpId(empId).orElseThrow(() -> 
+				new ResourceNotFoundException("Customer not found for this Id: "+ empId));
 				//System.out.println(pId);
 				c.setDept(e.getDept());
 				c.setDesg(e.getDesg());
 				c.setDob(e.getDob());
 				c.setDoj(e.getDoj());
 				c.setFname(e.getFname());
+				c.setLname(e.getLname());
+				c.setSex(e.getSex());
 //				if(e.getCustomerCards()!=null) c.setCustomerCards(e.getCustomerCards());
 //				if(e.getEmpIssues()!=null) c.setEmpIssues(e.getEmpIssues());
 				

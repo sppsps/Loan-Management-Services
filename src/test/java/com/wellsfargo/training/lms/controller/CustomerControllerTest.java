@@ -139,7 +139,7 @@ class CustomerControllerTest {
 		
 		@Test
 	    void testUpdateCustomer() throws ResourceNotFoundException {
-	        Long customerIdToUpdate = 1L;
+	        String customerIdToUpdate = "123";
 	        
 	        // Mock the behavior of the service
 	        Customer existingCustomer = new Customer();
@@ -154,12 +154,12 @@ class CustomerControllerTest {
 	        updatedCustomer.setLname("Doe");
 	        updatedCustomer.setDept("HR"); // Updated department
 	        
-	        when(cservice.getOne(customerIdToUpdate)).thenReturn(Optional.of(existingCustomer));
+	        when(cservice.getByEmpId(customerIdToUpdate)).thenReturn(Optional.of(existingCustomer));
 	        when(cservice.registerCustomer(any(Customer.class))).thenReturn(updatedCustomer);
 	        ResponseEntity<Customer> response = customerController.updateCustomer(customerIdToUpdate, updatedCustomer);
 	        
 	        // Verify that the service methods were called
-	        verify(cservice, times(1)).getOne(customerIdToUpdate);
+	        verify(cservice, times(1)).getByEmpId(customerIdToUpdate);
 	        verify(cservice, times(1)).registerCustomer(any(Customer.class));
 	        
 	        // Verify the response

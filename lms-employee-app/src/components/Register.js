@@ -66,31 +66,46 @@ const Register = () => {
   const validateForm = () => {
     let validationErrors = {};
 
+    
 
     if (!dealer.fname) {
         validationErrors.fname = 'First name is required.';
       }
       else if (!/^[a-zA-Z]*$/.test(dealer.fname)) {
-        validationErrors.fname = 'Enter ALphabets Only';
+        validationErrors.fname = 'Enter Alphabets Only';
       }
       
     if (!dealer.lname) {
     validationErrors.lname = 'Last name is required.';
     }
-    // Add more validation rules for other fields
-    if (!dealer.password) {
-        validationErrors.password = 'Password is required.';
-      } else if (dealer.password.length < 6) {
-        validationErrors.password = 'Password must be at least 6 characters.';
-      }
-  
-       if (!dealer.dob) {
-        validationErrors.dob = 'Date of Birth is required.';
-      } 
-  
-      //need to add more validations 
+    else if (!/^[a-zA-Z]*$/.test(dealer.lname)) {
+      validationErrors.lname = 'Enter Alphabets Only';
+    }
 
-      //nested object - due to one to one mapping
+
+    // Add more validation rules for other fields
+    // Password must be at least 8 characters
+    
+  if (dealer.password.length < 8) {
+    validationErrors.password = "Password must be atleast 8 characters";
+  }
+
+  // Password must contain at least one numeric character
+  if (!/\d/.test(dealer.password)) {
+    validationErrors.password = "Password must contain at least one numeric character";
+  }
+
+  // Password must contain at least one special character
+  if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(dealer.password)) {
+    validationErrors.password = "Password must contain at least one special character";
+  }
+
+  // Password must start with a capital letter
+  if (!/^[A-Z]/.test(dealer.password)) {
+    validationErrors.password = "Password must start with a capital letter";
+  }
+  
+  
       
 
     return validationErrors;

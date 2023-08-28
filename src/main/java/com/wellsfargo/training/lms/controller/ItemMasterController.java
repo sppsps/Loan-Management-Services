@@ -38,7 +38,7 @@ import com.wellsfargo.training.lms.service.LoanCardMasterService;
  * 
  * @RequestMapping - maps HTTP request with a path to a controller 
  * */
-
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value="/api")
 public class ItemMasterController {
@@ -101,6 +101,7 @@ public class ItemMasterController {
 	@PostMapping("/item_master/admin")
 	public ItemMaster saveForAdmin(@Validated @RequestBody ItemMaster itemMaster)throws ResourceNotFoundException
 	{
+		System.out.println(itemMaster.getItemDescription());
 		return pservice.saveItem(itemMaster);
 	}
 	

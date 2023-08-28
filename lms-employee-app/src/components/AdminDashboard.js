@@ -1,6 +1,7 @@
 import React from 'react'
 import '../style/Dashboard.css'
 import {useNavigate} from 'react-router-dom';
+import AuthenticationService from "../service/AuthenticationService";
 
 
 const Admin = () => {
@@ -14,9 +15,12 @@ const Admin = () => {
         history('/items');
     };
     const history = useNavigate();
+    const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
 
     return(
         <div className='admin'>
+            {isUserLoggedIn?(
+            <>
             <h1>Welcome Admin</h1>
             <section className="features">
                 <div className="feature">
@@ -41,6 +45,14 @@ const Admin = () => {
 
                 </div>
                 </section>
+                </>
+            ):(
+                <div style={{color:'red'}}>
+                    <h1>Oops!! Something went wrong</h1>
+                    <p>We're sorry,but there was an error processing your request.</p>
+                </div>
+            )
+            }
               </div>
 
     );

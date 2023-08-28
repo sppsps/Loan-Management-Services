@@ -16,6 +16,13 @@ import Admin from './components/AdminDashboard';
 import User from './components/UserDashboard';
 import CreateLoanCard from './components/CreateLoanCard';
 import ViewLoanCard from './components/ViewLoanCard';
+import CreateItem from './components/CreateItem';
+import ViewItem from './components/ViewItem';
+import Logout from './components/Logout';
+import AppliedLoans from './components/AppliedLoans';
+import ApplyLoan from './components/ApplyLoan';
+import Profile from './components/Profile';
+import CreateCustomer from './components/createCustomer';
 
 library.add(faTrash,faEdit,faList,faHome,faSignIn, faSignOut, faCameraRetro, faBomb, faCoffee, faPeopleGroup);
 
@@ -51,19 +58,27 @@ function App() {
 
               </NavBar>
 
-              <Routes>
-                <Route path = '/' exact Component={Home}></Route>
-                <Route path = 'register' Component={Register}></Route>
-                <Route path = 'login' Component={Login}></Route>
-                <Route path = 'items' Component={Item}></Route>
-                <Route path='/loan' Component={Loan}></Route>
-                <Route path = '/customers' Component={CustomerInfo}></Route>
-                <Route path = '/admin' Component={Admin}></Route>
-                <Route path = '/user' Component={User}></Route>
+            <Routes>
+              <Route path = '/' exact Component={Home}></Route>
+              <Route path = 'register' Component={Register}></Route>
+              <Route path = 'login' Component={Login}></Route>
+              <Route path = 'items' Component={Item}></Route>
+              <Route path='/loan' Component={Loan}></Route>
+              <Route path = '/customers' Component={CustomerInfo}></Route>
+              <Route path = '/admin' Component={Admin}></Route>
+              <Route path = '/user' Component={User}></Route>
+              <Route path = '/applied_loan' Component={AppliedLoans}></Route>
+              <Route path = '/apply_loan' Component={ApplyLoan}></Route>
+              <Route path = '/profile' Component={Profile}></Route>
+              <Route path = '/logout' Component={Logout}></Route>
+              {/* <Route path='/viewLoanCard/:id' element={<ViewProduct/>}></Route> */}
+              <Route path='/addLoanCard/:id' element={<CreateLoanCard/>}></Route>
+              <Route path='/viewLoanCard/:id' element={<ViewLoanCard/>}></Route>
+              <Route path='/addCustomer/:id' element={<CreateCustomer/>}></Route>
+              {/* <Route path='/addCustomer/_add' element={<CreateCustomer/>}></Route> */}
 
-                {/* <Route path='/viewLoanCard/:id' element={<ViewProduct/>}></Route> */}
-                <Route path='/addLoanCard/:id' element={<CreateLoanCard/>}></Route>
-                <Route path='/viewLoanCard/:id' element={<ViewLoanCard/>}></Route>
+              <Route path='/addItem/:id' element={<CreateItem/>}></Route>
+              <Route path='/viewitem/:id' element={<ViewItem/>}></Route>
 
               </Routes>
             </Router>
