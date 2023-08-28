@@ -8,6 +8,7 @@ import '../style/NavBar.css';
 import { IconContext } from 'react-icons';
 import {useNavigate} from 'react-router-dom';
 import AuthenticationService from "../service/AuthenticationService";
+import Dropdown from './DropDown';
 
 const NavBar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -32,7 +33,11 @@ const handleLogout = () => {
         </Link>
         <img src="../images/payday.png" className="App-logo" alt="logo" />
         <h1 class="heading">Payday Loans</h1>
-        <button onClick={LoginPage}>Sign in</button>
+        {isUserLoggedIn?(
+        <div className='dropdown'><Dropdown></Dropdown></div>
+        ):(
+          <button onClick={LoginPage}>Sign in</button>
+        )}
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-list' onClick={showSidebar}>

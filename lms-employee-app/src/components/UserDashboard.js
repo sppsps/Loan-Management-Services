@@ -1,9 +1,28 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import '../style/Dashboard.css'
 import {useNavigate} from 'react-router-dom';
+import AuthenticationService from "../service/AuthenticationService";
 
 
 const User = () => {
+
+    const [user,setUser]=useState({});
+
+    useEffect(() => {
+        fetchCustomerInfo();
+        // setUser(AuthenticationService.getLoggedInUserName());
+      }, []);
+      const fetchCustomerInfo = async () => {
+        try {
+          const data = await AuthenticationService.getLoggedInUserDetails();
+          // console.log("data"+data.fname);
+          setUser(data);
+          // console.log(user.fname);
+        } catch (error) {
+          console.error("Error fetching Customer info:", error);
+        }
+      };
+  
     const loanCards = () => {
         history('/loan');
     };
@@ -11,11 +30,10 @@ const User = () => {
         history('/items_purchased');
     };
     const history = useNavigate();
-
     return(
         <div className='admin'>
-            {/* <header>Loan Management System</header> */}
-            <h1>Hello Customer</h1>
+            {/* <head er>Loan Management System</header> */}
+            <h1>Hello {user.fname}&nbsp;{user.lname} </h1>
 
             <section className="features">
                 <div className="feature">

@@ -65,7 +65,7 @@ static async registerCustomer(dealer) {
  * */
   static registerSuccessfulLogin(username) {   
     sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, username);
-    console.log("First"+username);
+    // console.log("First"+username);
    
  }
  static async getCustomerInfo() {
@@ -98,6 +98,18 @@ static getLoggedInUserName() {
     if (user === null) return ''
     return user
   }
+
+static async getLoggedInUserDetails(){
+    let userId=sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
+    try {
+        const response = await axios.get('http://localhost:8090/paydayloans/api/customers/'+userId); // Adjust the API endpoint
+        // console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error feching data', error);
+        throw new Error('Error in fetching user details ');
+    }
+}
 
  static logout() {
      
