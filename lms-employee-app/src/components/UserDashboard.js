@@ -8,7 +8,7 @@ const User = () => {
         history('/loan');
     };
     const items = () => {
-        history('/items');
+        history('/items_purchased');
     };
     const history = useNavigate();
 
@@ -29,7 +29,7 @@ const User = () => {
                     <img src="/images/items.jpg" alt="Feature 3" />
                     <h2>Items</h2>
                     <p>View the items purchased by you.</p>
-                    <button className="btn-primary" onClick={items}>View items</button>
+                    <button className="btn-primary" onClick={items}>View items Purchased</button>
 
                 </div>
                 </section>
