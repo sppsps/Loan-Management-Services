@@ -1,11 +1,52 @@
-.user-icon {
-    cursor: pointer; /* Add a pointer cursor to indicate interactivity */
-    /* Add other styles as needed, such as width, height, background, etc. */
+
+  
+  .profile-icon img {
+    width: 50px;
+    height: 50px; 
+    border-radius: 50%; 
+  }
+
+  
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
   }
   
-  .user-icon img {
-    /* Add styles specific to the <img> element within the user icon container */
-    width: 50px; /* Example width */
-    height: 50px; /* Example height */
-    border-radius: 50%; /* Example for a circular user avatar */
+  .profile-icon {
+    cursor: pointer;
   }
+  
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: black;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .dropdown-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-content li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: white;
+  }
+.dropdown-item {
+    color: white;
+
+}
+ 
+  
+  .dropdown-content li:hover {
+    background-color: cornsilk;
+    color: aqua;
+  }
+  
+  
