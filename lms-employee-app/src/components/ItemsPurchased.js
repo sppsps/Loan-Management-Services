@@ -18,6 +18,8 @@ function ItemsPurchased() {
 
     const fetchItemsPurchased = async () => {
         try {
+          const emp=AuthenticationService.getLoggedInUserName();
+          console.log(emp);
           const data = await AuthenticationService.getItemsPurchased();
           setViewItems(data);
         } catch (error) {

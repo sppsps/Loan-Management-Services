@@ -5,11 +5,14 @@ import {useNavigate} from 'react-router-dom';
 
 const User = () => {
     const loanCards = () => {
-        history('/loan');
+        history('/applied_loan');
     };
     const items = () => {
         history('/items_purchased');
     };
+    const buy_items=()=>{
+        history('/apply_loan');
+    }
     const history = useNavigate();
 
     return(
@@ -22,7 +25,7 @@ const User = () => {
                     <img src="../images/loans.jpg" alt="Feature 1" />
                     <h2>Loans</h2>
                     <p>Explore best available loans!!</p>
-                    <button className="btn-primary" onClick={loanCards}>View Loans</button>
+                    <button className="btn-primary" onClick={loanCards}>View Applied Loans</button>
 
                 </div>
                 <div className="feature">
@@ -30,6 +33,13 @@ const User = () => {
                     <h2>Items</h2>
                     <p>View the items purchased by you.</p>
                     <button className="btn-primary" onClick={items}>View items Purchased</button>
+
+                </div>
+                <div className="feature">
+                    <img src="/images/items.jpg" alt="Feature 3" />
+                    <h2>Purchase</h2>
+                    <p>Apply for a loan here</p>
+                    <button className="btn-primary" onClick={buy_items}>Apply for Loan</button>
 
                 </div>
                 </section>

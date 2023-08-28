@@ -25,7 +25,7 @@ import LoanCard from "./LoanCard";
     The useNavigate hook lets you navigate programmatically within your React code.
 */
 
-function Loan(props){
+function AppliedLoans(props){
     const history = useNavigate();
 
     // state Management using useState() react Hook
@@ -56,36 +56,13 @@ function Loan(props){
     const fetchLoancards=()=>{
       const emp=AuthenticationService.getLoggedInUserName();
           console.log(emp);
-        LoanCardService.getLoancards().then((response)=>{
+        LoanCardService.getAppliedLoancards(emp).then((response)=>{
             setLoancards(response.data);
         });
     };
-
-    const addLoanCard = () => {
-      history('/addLoanCard/_add'); // Load Component createproduct and pass '_add' as parameter
-  };
-
-
-
-  const editLoanCard = (id) => {
-      history(`/addLoanCard/${id}`); // use back Quote operator
-  };
-
-  const deleteLoanCard = (id) => {
-      LoanCardService.deleteLoancard(id).then(() => {
-         // setProducts(products.filter(product => product.id !== id));
-         fetchLoancards(); // Refresh products list
-          setMessage('Product deleted successfully.'); 
-           // Clear the message after 3 seconds
-           setTimeout(() => {
-              setMessage('');
-          }, 2000);
-      });
-  };
-
-  const viewLoanCard = (id) => {
-      history(`/viewLoanCard/${id}`);
-  };
+    const backLoancard = () => {
+        history('/user');
+    };
 
     /*We are using the map operator to loop over our products list and create the view
     */
@@ -150,11 +127,9 @@ function Loan(props){
             // </div>
             
             <div className="container-fluid">
-              <h2>Available Loan cards</h2>
+              <h2>Your Loan cards</h2>
               <br/>
-                     <div className = "row justify-content-center">
-                      <button className="btn btn-info w-auto" onClick={addLoanCard}>Add Loan Card</button>
-                     </div>
+                    
                  <br/>
             <div className="row">
               {loancards.map(loancard => (
@@ -180,32 +155,18 @@ function Loan(props){
                     {/* <a href="#" className="btn btn-primary">
                       Get Now
                     </a> */}
-                    &nbsp;
-                    <button className="btn btn-success" onClick={() => {console.log("clicked"); editLoanCard(loancard.id)}}>
-                      <span>
-                        <FontAwesomeIcon icon="edit"></FontAwesomeIcon>
-                      </span>
-                    </button>
-                    &nbsp;
-                    <button className="btn btn-danger" onClick={() => deleteLoanCard(loancard.id)}>
-                      <span>
-                        <FontAwesomeIcon icon="trash"></FontAwesomeIcon>
-                      </span>
-                    </button>
-                    &nbsp;
-                    <button className="btn btn-primary" onClick={() => viewLoanCard(loancard.id)}>
-                      <span>
-                        <FontAwesomeIcon icon="list"></FontAwesomeIcon>
-                      </span>
-                    </button>
+                    
                   </div>
                 </div>
               </div>
             ))}
+            <div className = "row justify-content-center">
+                        <button className="btn btn-info w-auto" onClick={backLoancard}>Back To Dashboard</button>
+                    </div>
             </div>
           </div>
         );
 }
 
 
-export default Loan;
+export default AppliedLoans;

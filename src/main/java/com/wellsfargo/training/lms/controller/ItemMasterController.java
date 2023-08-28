@@ -101,6 +101,7 @@ public class ItemMasterController {
 	@PostMapping("/item_master/admin")
 	public ItemMaster saveForAdmin(@Validated @RequestBody ItemMaster itemMaster)throws ResourceNotFoundException
 	{
+		System.out.println(itemMaster.getItemDescription());
 		return pservice.saveItem(itemMaster);
 	}
 	

@@ -25,6 +25,12 @@ class ItemService{
     static deleteItem(ItemId){
         return axios.delete(Item_REST_API_URL+'/'+ItemId);
     }
+
+
+    static apply(requestData)
+    {
+        return axios.post(Item_REST_API_URL,requestData);
+    }
 }
 
 

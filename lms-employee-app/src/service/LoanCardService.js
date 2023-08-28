@@ -25,6 +25,11 @@ class LoanCardService{
     static deleteLoancard(LoancardId){
         return axios.delete(LOANCARD_REST_API_URL+'/'+LoancardId);
     }
+
+    static getAppliedLoancards(empId){
+        console.log(empId);
+        return axios.get('http://localhost:8090/paydayloans/api/loans/'+empId);
+    }
 }
 
 
