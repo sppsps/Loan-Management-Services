@@ -38,7 +38,7 @@ import com.wellsfargo.training.lms.service.LoanCardMasterService;
  * 
  * @RequestMapping - maps HTTP request with a path to a controller 
  * */
-
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value="/api")
 public class ItemMasterController {
