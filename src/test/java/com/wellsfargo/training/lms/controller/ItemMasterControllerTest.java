@@ -138,7 +138,7 @@ public class ItemMasterControllerTest {
             when(loanCardMasterService.getByLoanId(requestData.getLoanId())).thenReturn(loanCard);
             when(itemMasterService.saveItem(itemMaster)).thenReturn(itemMaster);
 
-            ItemMaster savedItemMaster = controller.saveItemMaster(requestData);
+            ItemMaster savedItemMaster = controller.saveItemMaster(requestData).getBody();
 
             assertEquals(itemMaster, savedItemMaster);
         }
