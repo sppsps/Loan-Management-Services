@@ -55,8 +55,9 @@ const User = () => {
                 </section>
               </div>
       ):(
-        <div>
-        <h1>Login please</h1>
+        <div style={{color:'red'}}>
+          <h1>Oops!! Something went wrong</h1>
+          <p>We're sorry,but there was an error processing your request.</p>
         </div>
       )
       }
