@@ -9,8 +9,12 @@
 .navbar button {
   /* position: absolute; */
   margin-left: auto;
+  color: #1a83ff;
+  background-color: #060b26;
 }
-
+.dropdown{
+  margin-left: auto;
+}
 .App-logo {
   height: 10vmin;
   pointer-events: none;

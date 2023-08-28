@@ -12,7 +12,7 @@ class Logout extends Component {
             <div>
                 <img style={{
                     borderRadius:'20px',     
-                }} src="/images/run.jpg" alt="log out" 
+                }} src="/images/run.png" alt="log out" 
                 height={400} width={400}></img>
                 
             </div><br/>
