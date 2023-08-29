@@ -2,17 +2,17 @@ import React from 'react'
 import '../style/Home.css'
 import { Link } from 'react-router-dom';
 
-document.addEventListener('DOMContentLoaded', function() {
-    const loginButton = document.getElementById('login-button');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const loginButton = document.getElementById('login-button');
     
-    loginButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  });
+//     loginButton.addEventListener('click', function(event) {
+//       event.preventDefault();
+//       window.scrollTo({
+//         top: 0,
+//         behavior: 'smooth'
+//       });
+//     });
+//   });
 
 const Home = () => {
     return(
@@ -58,10 +58,10 @@ const Home = () => {
                 </p>
             </div>
 
-            <div class="button-container">
+            {/* <div class="button-container">
                 <Link to ="/login" class="button" id="login-button">Login</Link>
                 <p class="message">Unregistered? <Link to ="/register">Register</Link></p>
-            </div>
+            </div> */}
         </div>
     );
 }
