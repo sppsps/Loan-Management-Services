@@ -118,7 +118,7 @@ static async getLoggedInUserDetails(){
 
  static logout() {
      
-    sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.removeItem("authenticatedUser");
 }
   
   
