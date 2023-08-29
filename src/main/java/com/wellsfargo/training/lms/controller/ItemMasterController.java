@@ -73,6 +73,7 @@ public class ItemMasterController {
 //		ItemMaster p=pservice.saveItem(product);
 //		System.out.println(product.getItemDescription());
 //		return p;
+		System.out.println(data.getEmpId());
 		Customer customer = cservice.getByEmpId(data.getEmpId()).orElseThrow(()->
 		new ResourceNotFoundException("Customer Not Found for this id ::"));
 		

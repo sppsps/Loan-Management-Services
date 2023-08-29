@@ -57,15 +57,11 @@ function ApplyLoan(){
             loanId
         }
         console.log("Hi");
-        ItemService.apply(requestData).then(() => {
-                    // console.log(res);
+        ItemService.apply(requestData).then((res) => {
+                    console.log(res);
                     navigate('/user');
                 });
-                // .catch((err)=>{
-                //     ItemService.apply(requestData);
-                //     navigate('/user');
-                // });
-        console.log("Hi");
+        
         // if (id === '_add') {
         //     ItemService.createItem(item).then(() => {
         //         navigate('/items');

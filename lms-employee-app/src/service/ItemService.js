@@ -29,9 +29,7 @@ class ItemService{
 
     static apply(requestData)
     {
-        
         return axios.post(Item_REST_API_URL,requestData);
-        
     }
 }
 
