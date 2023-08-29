@@ -36,7 +36,9 @@ const handleLogout = () => {
         {isUserLoggedIn?(
         <div className='dropdown'><Dropdown></Dropdown></div>
         ):(
-          <button onClick={LoginPage}>Sign in</button>
+          <button onClick={LoginPage} className="SignInButton" style={{color:'darkblue'}}>
+            Sign in
+          </button>
         )}
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -83,16 +85,16 @@ const handleLogout = () => {
                     </Link>
                 </li>
 
-                <li className = "nav-item">
+                {/* <li className = "nav-item">
                     <Link to="/items" className = "nav-link">
                     <span><FontAwesomeIcon icon = "camera-retro"></FontAwesomeIcon></span> &nbsp; Items List
                     </Link>
-                </li>
-                <li className = "nav-item">
+                </li> */}
+                {/* <li className = "nav-item">
                     <Link to="/loan" className = "nav-link">
                     <span><FontAwesomeIcon icon = "bomb"></FontAwesomeIcon></span> &nbsp; Loan Cards
                     </Link>
-                </li>
+                </li> */}
         
                 <li className="nav-item">
                   {/* <img src="../images/payday.png"></img> */}

@@ -1,0 +1,95 @@
+.Heading {
+    display: flex;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    /* color:rgb(39, 180, 88) */
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin-bottom: 30px;
+    font-size:6vh;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .Heading:hover {
+    transform: scale(1.02);
+    /* color: #0015ff; Change the color on hover */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3); /* Adjust the shadow on hover */
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .Paragraph {
+    display: flexbox;
+    background-image: linear-gradient(to left, #148ccd, #1cd537);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow:2px 4px 10px #148ccd;
+    /* margin-right: 150px;
+    margin-left: 10px; */
+    font-family:'Poppins', sans-serif;
+    font-weight: 100;
+    font-size: 4vh;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    /* background-clip: text;
+    -webkit-background-clip: text; */
+    
+  }
+
+  .Paragraph:hover {
+    transform: scale(1.02);
+    /* color: #0015ff; Change the color on hover */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3); /* Adjust the shadow on hover */
+    background-image: linear-gradient(to left, #f3f565, #eb3c91);
+    
+    /* background-clip: text;
+    -webkit-background-clip: text; */
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8855FF; /* Bluish purple color */
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    min-height: 8vh;
+    min-width:15vh;
+    font-size: 5vh;
+  }
+  
+  .button:hover {
+    background-color: #6633CC; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight scale up on hover */
+    color:white;
+  }
+  
+  .message {
+    margin-top: 20px;
+    font-size: 3vh;
+    color: #555;
+  }
+  
+  .message a {
+    color: #8855FF;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .message a:hover {
+    color: #cdb9f5;
+  }
+  

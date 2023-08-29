@@ -49,14 +49,15 @@ function App() {
       </header> */}
 
       <section>
-        <div style={{ backgroundImage: "url(/images/background.png)",
-                    backgroundRepeat: 'no-repeat',
-                    // display:'flex',
-                    backgroundSize:'cover', minHeight:'100vh',minWidth:'100vw'}}>
-          <Router>
-            <NavBar>
+        <div></div>
+          <div style={{ backgroundImage: "url(/images/background.png)",
+                      backgroundRepeat: 'repeat-y',
+                      // display:'flex',
+                      backgroundSize:'cover', minHeight:'250vh',minWidth:'100vw'}}>
+            <Router>
+              <NavBar>
 
-            </NavBar>
+              </NavBar>
 
             <Routes>
               <Route path = '/' exact Component={Home}></Route>
@@ -82,15 +83,16 @@ function App() {
               <Route path='/addItem/:id' element={<CreateItem/>}></Route>
               <Route path='/viewitem/:id' element={<ViewItem/>}></Route>
 
-            </Routes>
-          </Router>
-        </div>
-      </section>
+              </Routes>
+            </Router>
+          </div>
+        </section>
 
-      <footer className='footer'>
-        <p>&copy; All rights reserved to Wells Fargo</p>
-      </footer>
-    </div>
+        <footer className='footer'>
+          
+          <p>&copy; All rights reserved to Wells Fargo</p>
+        </footer>
+      </div>
   );
 }
 

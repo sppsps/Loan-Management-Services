@@ -213,13 +213,18 @@ const Register = () => {
 
         <div className="form-group">
           <label>Gender:</label>
-          <input
+          <select id="sex" name="sex" value={dealer.sex}
+            onChange={handleChange} className={errors.sex && 'error'}>
+            <option value="F">F</option>
+            <option value="M">M</option>
+          </select>
+          {/* <input
             type="text"
             name="sex"
             value={dealer.sex}
             onChange={handleChange}
             className={errors.sex && 'error'}
-          />
+          /> */}
           {errors.sex && <p className="error-message">{errors.sex}</p>}
         </div>
 
