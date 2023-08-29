@@ -37,8 +37,8 @@ const Login = () => {
       const loginSuccess = await AuthenticationService.login(dealer);
       console.log('API response:', loginSuccess.data); // Add this line
       console.log(loginSuccess);
-      AuthenticationService.registerSuccessfulLogin(empId);
       if (loginSuccess!=2) {
+        AuthenticationService.registerSuccessfulLogin(empId);
         setSuccessMessage('Login successful. Redirecting...');
         setTimeout(() => {
           if (loginSuccess==1){

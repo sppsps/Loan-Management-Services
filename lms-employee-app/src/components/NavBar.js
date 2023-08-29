@@ -18,6 +18,7 @@ const NavBar = () => {
 const history = useNavigate();
 const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
 const handleLogout = () => {
+  // console.log("RD");
     AuthenticationService.logout();
    
   };
@@ -54,7 +55,7 @@ const handleLogout = () => {
               <span><FontAwesomeIcon icon = "home"></FontAwesomeIcon></span> &nbsp; Home</Link>
             </li>
                 <li className="nav-item">
-                    <Link to="/logout" className="nav-link" onClick={handleLogout}>
+                    <Link to="/logout" className="nav-link" onClick={() => handleLogout()}>
                     <span>
                         <FontAwesomeIcon icon="sign-out"></FontAwesomeIcon>
                     </span> 
