@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from "react";
-import {useNavigate,useParams} from "react-router-dom"
+import {useNavigate,useParams} from "react-router-dom";
 import ItemService from "../service/ItemService";
 
 const ViewItem=()=>{
@@ -33,10 +33,7 @@ const history = useNavigate();
                         <label>Description:</label>
                         <div class="text-success fw-bolder">{item.itemDescription}</div><hr/>
                     </div>
-                    <div className="row">
-                        <label>Issue Status :</label>
-                        <div class="text-success fw-bolder">{item.issueStatus}</div><hr/>
-                    </div>
+                    
                     <div className="row">
                         <label>Make:</label>
                         <div class="text-success fw-bolder">{item.itemMake}</div><hr/>

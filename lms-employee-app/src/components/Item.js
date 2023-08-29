@@ -99,7 +99,7 @@ function Item(props){
                         <tr className="table-danger">
                             <th>Item Id</th>
                             <th> Description</th>
-                            <th> Issue Status</th>
+                            
                             <th> Make</th>
                             <th> Category</th>
                             <th> Valuation</th>
@@ -112,7 +112,7 @@ function Item(props){
                                     <tr key={item.id}>
                                         <td> {item.itemId} </td>
                                         <td> {item.itemDescription} </td>
-                                        <td> {item.issueStatus} </td>
+                                        
                                         <td> {item.itemMake} </td>
                                         <td> {item.itemCategory} </td>
                                         <td> {item.itemValuation} </td>

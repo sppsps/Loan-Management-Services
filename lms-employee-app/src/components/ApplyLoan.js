@@ -18,27 +18,11 @@ function ApplyLoan(){
     const [itemCategory, setItemCategory] = useState('');
     const [itemValuation, setItemValuation] = useState('');
 
-     // componentDidUpdate usage
-    // useEffect(() => {
-    //     if (id !== '') {
-    //         ItemService.getItemById(id).then((response) => {
-    //             const item = response.data;
-    //             setItemId(item.itemId);
-    //             setItemDescription(item.itemDescription);
-    //             setIssueStatus(item.issueStatus);
-    //             setItemMake(item.itemMake);
-    //             setItemCategory(item.itemCategory);
-    //             setItemValuation(item.itemValuation);
-                
-    //         });
-    //     }
-    // }, [id]); // //values -id triggers re render whenever they are updated in your program,
-                //you can add multiple values by separating them by commas
-
+    
     const saveOrUpdateItem = (event) => {
         event.preventDefault();
         const empId=AuthenticationService.getLoggedInUserName();
-        // console.log(empid);
+        console.log(empId);
         const itemMaster ={ itemId, 
             itemDescription,
             issueStatus, 
@@ -72,10 +56,16 @@ function ApplyLoan(){
             itemMaster,
             loanId
         }
-
+        console.log("Hi");
         ItemService.apply(requestData).then(() => {
+                    // console.log(res);
                     navigate('/user');
                 });
+                // .catch((err)=>{
+                //     ItemService.apply(requestData);
+                //     navigate('/user');
+                // });
+        console.log("Hi");
         // if (id === '_add') {
         //     ItemService.createItem(item).then(() => {
         //         navigate('/items');
