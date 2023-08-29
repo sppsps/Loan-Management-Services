@@ -44,9 +44,11 @@ const Dropdown = () => {
             {isAdmin?(
               <li><Link to='/admin' className='dropdown-item'>Admin Dashboard</Link></li>
             ):(
+              <>
               <li><Link to='/user' className='dropdown-item'>User Dashboard</Link></li>
+              <li><Link to={path} className='dropdown-item'>Update Profile</Link></li>
+              </>
             )}
-            <li><Link to={path} className='dropdown-item'>Update Profile</Link></li>
             <li>
             <Link to="/logout" className='dropdown-item' onClick={handleLogout}>Logout</Link>
             </li>
