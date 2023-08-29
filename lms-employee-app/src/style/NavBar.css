@@ -108,3 +108,17 @@
   justify-content: start;
   align-items: center;
 }
+
+.SignInButton{
+  border-radius: 5px;
+  background: radial-gradient(#4ae5f3, #0f22f3);
+  color:darkblue;
+  border: none;
+  height : 6vh;
+  width: 12vh;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out
+}
+
+.SignInButton:hover { 
+  background:  #0f22f3;
+}

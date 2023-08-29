@@ -36,7 +36,9 @@ const handleLogout = () => {
         {isUserLoggedIn?(
         <div className='dropdown'><Dropdown></Dropdown></div>
         ):(
-          <button onClick={LoginPage}>Sign in</button>
+          <button onClick={LoginPage} className="SignInButton" style={{color:'darkblue'}}>
+            Sign in
+          </button>
         )}
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

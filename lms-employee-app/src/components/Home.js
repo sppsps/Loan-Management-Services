@@ -2,6 +2,17 @@ import React from 'react'
 import '../style/Home.css'
 import { Link } from 'react-router-dom';
 
+document.addEventListener('DOMContentLoaded', function() {
+    const loginButton = document.getElementById('login-button');
+    
+    loginButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
 
 const Home = () => {
     return(
@@ -45,6 +56,11 @@ const Home = () => {
                 <p className='Paragraph'>
                     Acting as loan providers constitutes a central function of financial entities, notably including banks and credit card companies. For diverse institutions, the issuance of debt instruments like bonds represents a conventional avenue for securing financial resources.
                 </p>
+            </div>
+
+            <div class="button-container">
+                <Link to ="/login" class="button" id="login-button">Login</Link>
+                <p class="message">Unregistered? <Link to ="/register">Register</Link></p>
             </div>
         </div>
     );

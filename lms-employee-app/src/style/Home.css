@@ -48,3 +48,48 @@
     /* background-clip: text;
     -webkit-background-clip: text; */
   }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8855FF; /* Bluish purple color */
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    min-height: 8vh;
+    min-width:15vh;
+    font-size: 5vh;
+  }
+  
+  .button:hover {
+    background-color: #6633CC; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight scale up on hover */
+    color:white;
+  }
+  
+  .message {
+    margin-top: 20px;
+    font-size: 3vh;
+    color: #555;
+  }
+  
+  .message a {
+    color: #8855FF;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .message a:hover {
+    color: #cdb9f5;
+  }
+  
