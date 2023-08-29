@@ -53,10 +53,12 @@ function ApplyLoan(){
 
         const requestData={
             empId,
-            itemMaster,
-            loanId
+            loanId,
+            itemMaster
+            
         }
         console.log("Hi");
+        console.log(requestData);
         ItemService.apply(requestData).then((res) => {
                     console.log(res);
                     navigate('/user');
@@ -139,6 +141,13 @@ function ApplyLoan(){
                                     </div>
 
                                     <div className = "form-group">
+                                        <label> Category: </label>
+                                        <input placeholder="Category" name="itemCategory" className="form-control" 
+                                            value={itemCategory} onChange={changeItemCategoryHandler}/>
+                                    </div>
+
+                                    {/* Item Category Dropdown
+                                     <div className = "form-group">
                                         <label for='Category'>Select Category: </label>
                                         <select name="itemCategory" className="form-control" 
                                              onChange={changeItemCategoryHandler}>
@@ -150,7 +159,7 @@ function ApplyLoan(){
                                              <option value="Ornaments">Jewellery</option>
 
                                              </select>
-                                    </div>
+                                    </div> */}
                                     {
                                         // changeIssueStatusHandler()
                                     }
