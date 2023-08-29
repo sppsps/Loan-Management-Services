@@ -1,8 +1,11 @@
 import React,{useState, useEffect} from "react";
 import {useNavigate,useParams} from "react-router-dom"
 import CustomerService from "../service/CustomerService";
+import AuthenticationService from "../service/AuthenticationService";
 
 function CreateCustomer(){
+    const isAdmin= AuthenticationService.isAdmin();
+
     const navigate = useNavigate();
     /*The useParams hook returns an object of key/value pairs of the dynamic params 
     from the current URL that were matched by the <Route path>. Child routes inherit 
@@ -55,7 +58,7 @@ function CreateCustomer(){
         } else {
             // console.log("caretae");
             CustomerService.updateCustomer(Customer, id).then(() => {
-                if (Customer.empId==='000000'){
+                if (isAdmin){
                 navigate('/customers');
                 }
                 else{
@@ -139,8 +142,13 @@ function CreateCustomer(){
                                     </div>
                                     <div className = "form-group">
                                         <label> Gender: </label>
-                                        <input placeholder="Customer Gender" name="sex" className="form-control" 
-                                            value={sex} onChange={changeCustomerGenderHandler}/>
+                                        <select id="sex" name="sex" className="form-control" value={sex}
+            onChange={changeCustomerGenderHandler} >
+            <option value="F">F</option>
+            <option value="M">M</option>
+          </select>
+                                        {/* <input placeholder="Customer Gender" name="sex" className="form-control" 
+                                            value={sex} onChange={changeCustomerGenderHandler}/> */}
                                     </div>
                                     <div className = "form-group">
                                         <label> Department: </label>
@@ -154,12 +162,12 @@ function CreateCustomer(){
                                     </div>
                                     <div className = "form-group">
                                         <label> Dob: </label>
-                                        <input placeholder="Customer Dob" name="dob" className="form-control" 
+                                        <input  type="date" placeholder="Customer Dob" name="dob" className="form-control" 
                                             value={dob} onChange={changeCustomerDobHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Doj: </label>
-                                        <input placeholder="Customer Doj" name="doj" className="form-control" 
+                                        <input  type="date" placeholder="Customer Doj" name="doj" className="form-control" 
                                             value={doj} onChange={changeCustomerDojHandler}/>
                                     </div>
                                     <button className="btn btn-success" onClick={saveOrUpdateCustomer}>Save</button>
