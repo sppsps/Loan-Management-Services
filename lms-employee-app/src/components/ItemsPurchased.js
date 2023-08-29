@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {useNavigate,useParams} from "react-router-dom";
 
 import AuthenticationService from "../service/AuthenticationService";
 
-import "../style/ItemsPurchased.css";
+// import "../style/ItemsPurchased.css";
 
 function ItemsPurchased() {
 
+  const history = useNavigate();
     // state mgmt
     const [viewItems, setViewItems] = useState([]);
     const [user,setUser] = useState('');
@@ -20,43 +22,60 @@ function ItemsPurchased() {
         try {
           const emp=AuthenticationService.getLoggedInUserName();
           console.log(emp);
-          const data = await AuthenticationService.getItemsPurchased();
-          setViewItems(data);
+          // const data = await AuthenticationService.getItemsPurchased(emp);
+          // setViewItems(data);
+          AuthenticationService.getItemsPurchased(emp).then((response) => {
+            setViewItems(response.data);
+            console.log(response.data,"purch");
+          });
+
         } catch (error) {
           console.error("Error fetching Items Purchased:", error);
         }
       };
 
+      const backItem = () => {
+        history('/user');
+    };
+
       return (
-        <> <br/>
-        <div>
-         <div className = "container">Welcome {user}</div>
-          <h2 style={{color:'yellow'}}>Items Purchased</h2>
-          <table className="items-purchased" cellPadding={10} cellSpacing={20}>
-            <thead>
-              <tr>
-                <th>Issue Id</th>
-                <th>Item Description</th>
-                <th>Item Make</th>
-                <th>Item Category</th>
-                <th>Item Valuation</th>
-                {/* Add more table headers as needed */}
-              </tr>
+        <> 
+        <br/>
+
+        <div className="container"> Welcome {user}</div>
+        <h1 className="text-warning">Purchased Items List</h1>
+        <br></br>
+        <div className="row justify-content-center" >
+            <table className="table table-success w-auto">
+             <thead>
+                <tr className="table-danger">
+                    <th>Item Id</th>
+                    <th> Description</th>
+                    
+                    <th> Make</th>
+                    <th> Category</th>
+                    <th> Valuation</th>
+                    
+                </tr>
             </thead>
             <tbody>
               {viewItems.map((dealer) => (
-                <tr key={dealer.id}>
-                  <td>{dealer.id}</td>
-                  <td>{dealer.itemDescription}</td>
-                  <td>{dealer.itemMake}</td>
-                  <td>{dealer.itemCategory}</td>
-                  <td>{dealer.itemValuation}</td>
+                <tr key={dealer[0]}>
+                  <td>{dealer[0]}</td>
+                  <td>{dealer[1]}</td>
+                  <td>{dealer[2]}</td>
+                  <td>{dealer[3]}</td>
+                  <td>{dealer[4]}</td>
                   {/* Add more table cells as needed */}
                 </tr>
               ))}
             </tbody>
           </table>
-        </div></>
+        </div>
+        <div className = "row justify-content-center">
+                        <button className="btn btn-info w-auto" onClick={backItem}>Back To User Dashboard</button>
+                    </div>
+        </>
       );
 }
 
