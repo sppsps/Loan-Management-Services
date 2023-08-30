@@ -3,6 +3,7 @@ package com.wellsfargo.training.lms.model;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,10 +22,12 @@ public class CustomerCard {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date issueDate;
 
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "emp_Id")
     private Customer customer;
 	
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "loan_id")
     private LoanCardMaster loanCard;

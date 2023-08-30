@@ -3,6 +3,8 @@ package com.wellsfargo.training.lms.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -23,6 +25,7 @@ public class LoanCardMaster {
 	@Column(name="duration")
 	private int duration;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "loanCard", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CustomerCard> customerCards = new ArrayList<>();
 

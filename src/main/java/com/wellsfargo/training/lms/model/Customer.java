@@ -7,6 +7,7 @@ import java.util.Base64;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -47,9 +48,11 @@ public class Customer {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date doj;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CustomerCard> customerCards = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<EmployeeIssue> empIssues = new ArrayList<>();
 

@@ -4,6 +4,7 @@ package com.wellsfargo.training.lms.model;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -25,10 +26,12 @@ public class EmployeeIssue {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date returnDate;
 	
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "emp_Id")
     private Customer customer;
 
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "item_id")
     private ItemMaster itemMaster;
