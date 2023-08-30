@@ -123,13 +123,13 @@ public class ItemMasterControllerTest {
 //        verify(employeeIssueService, times(1)).saveIssue(any(EmployeeIssue.class));
             RequestData requestData = new RequestData();
             requestData.setEmpId("123");
-            requestData.setLoanId("456");
+            requestData.setLoanId("L001");
 
             Customer customer = new Customer();
             customer.setEmpId("123");
 
             LoanCardMaster loanCard = new LoanCardMaster();
-            loanCard.setLoanId("456");
+            loanCard.setLoanId("L001");
 
             ItemMaster itemMaster = new ItemMaster();
             requestData.setItemMaster(itemMaster);
