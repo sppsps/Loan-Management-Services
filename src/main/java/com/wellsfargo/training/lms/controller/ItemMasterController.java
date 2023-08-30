@@ -77,8 +77,28 @@ public class ItemMasterController {
 		Customer customer = cservice.getByEmpId(data.getEmpId()).orElseThrow(()->
 		new ResourceNotFoundException("Customer Not Found for this id ::"));
 		
-		LoanCardMaster loanCard = lservice.getByLoanId(data.getLoanId());
+		HashMap<String, String> loanIdToType = new HashMap<>();
+		loanIdToType.put("L001", "Furniture");
+		loanIdToType.put("L002", "Wooden");
+		loanIdToType.put("L003", "Crockery");
+		
+		HashMap<String, Integer> loanIdToDuration = new HashMap<>();
+		loanIdToDuration.put("L001", 5);
+		loanIdToDuration.put("L002", 6);
+		loanIdToDuration.put("L003", 2);
+		
+		
+		
+		LoanCardMaster loanCard = new LoanCardMaster();
+		System.out.println(data.getLoanId()+"  LoanID");
+		loanCard.setDuration(loanIdToDuration.get(data.getLoanId()));
+		loanCard.setLoanId(data.getLoanId());
+		loanCard.setLoanType(loanIdToType.get(data.getLoanId()));
+		
+		lservice.saveLoanCard(loanCard);
+		
 		CustomerCard c = new CustomerCard();
+		lservice.saveLoanCard(loanCard);
 		c.setCustomer(customer);
 		c.setLoanCard(loanCard);
 		c.setIssueDate(Calendar.getInstance().getTime());
